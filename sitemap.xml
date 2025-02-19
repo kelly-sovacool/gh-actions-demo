@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://kelly-sovacool.github.io/gh-actions-demo/sections/3_ghapi.html</loc>
-    <lastmod>2025-02-19T18:13:47.662Z</lastmod>
+    <loc>https://kelly-sovacool.github.io/gh-actions-demo/sections/snakemake.html</loc>
+    <lastmod>2025-02-19T19:37:21.232Z</lastmod>
   </url>
   <url>
-    <loc>https://kelly-sovacool.github.io/gh-actions-demo/sections/2_snakemake.html</loc>
-    <lastmod>2025-02-19T18:13:47.662Z</lastmod>
+    <loc>https://kelly-sovacool.github.io/gh-actions-demo/sections/docs.html</loc>
+    <lastmod>2025-02-19T19:37:21.232Z</lastmod>
   </url>
   <url>
-    <loc>https://kelly-sovacool.github.io/gh-actions-demo/sections/0_intro.html</loc>
-    <lastmod>2025-02-19T18:13:47.661Z</lastmod>
+    <loc>https://kelly-sovacool.github.io/gh-actions-demo/sections/ci.html</loc>
+    <lastmod>2025-02-19T19:37:21.232Z</lastmod>
   </url>
   <url>
     <loc>https://kelly-sovacool.github.io/gh-actions-demo/index.html</loc>
-    <lastmod>2025-02-19T18:13:47.661Z</lastmod>
+    <lastmod>2025-02-19T19:37:21.232Z</lastmod>
   </url>
   <url>
-    <loc>https://kelly-sovacool.github.io/gh-actions-demo/sections/9_conclusion.html</loc>
-    <lastmod>2025-02-19T18:13:47.662Z</lastmod>
+    <loc>https://kelly-sovacool.github.io/gh-actions-demo/sections/conclusion.html</loc>
+    <lastmod>2025-02-19T19:37:21.232Z</lastmod>
   </url>
   <url>
-    <loc>https://kelly-sovacool.github.io/gh-actions-demo/sections/1_ci.html</loc>
-    <lastmod>2025-02-19T18:13:47.661Z</lastmod>
+    <loc>https://kelly-sovacool.github.io/gh-actions-demo/sections/intro.html</loc>
+    <lastmod>2025-02-19T19:37:21.232Z</lastmod>
   </url>
   <url>
-    <loc>https://kelly-sovacool.github.io/gh-actions-demo/sections/4_docs.html</loc>
-    <lastmod>2025-02-19T18:13:47.662Z</lastmod>
+    <loc>https://kelly-sovacool.github.io/gh-actions-demo/sections/ghapi.html</loc>
+    <lastmod>2025-02-19T19:37:21.232Z</lastmod>
   </url>
 </urlset>
