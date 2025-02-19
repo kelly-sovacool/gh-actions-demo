@@ -37,7 +37,7 @@
     "href": "sections/docs.html",
     "title": "Rendering documents",
     "section": "",
-    "text": "You can render documents such as Quarto and R Markdown notebooks and publish the outputs with GitHub Pages. Analysis notebooks, scheduled reports with data crunched from external databases, and documentation websites for software can all be published automatically with GHA & Pages.\nTake a look at the example quarto document: quarto-report/notebook.qmd1. Let’s write a workflow to render this document and publish it to the web:\nBefore you can use this workflow, we’ll need to first manually publish it to GitHub Pages.\nOnce this finishes, the rendered report will be available at https://USERNAME.github.io/REPO (replace USERNAME with your actual GitHub username and REPO with your repo name, e.g. gh-actions-sandbox.)\nNow, add the GHA workflow to your repo and it will keep your website up to date.\nThe first time this workflow ran, it took several minutes to complete (here, 6 minutes and 30 seconds). The main bottleneck occurs when installing R packages.\nHowever, the setup-r-dependencies action caches the R packages2, so subsequent runs are significantly faster.\nTake a look at the GitHub Docs for more information on caching dependencies to improve workflow runtime.3",
+    "text": "You can render documents such as Quarto1, R Markdown, and Jupyter notebooks and publish the outputs with GitHub Pages. Analysis notebooks, scheduled reports that crunch data from external databases, and documentation websites for software can all be published automatically with GHA & Pages.\nTake a look at the example quarto document: quarto-report/notebook.qmd2. Let’s write a workflow to render this document and publish it to the web:\nBefore you can use this workflow, we’ll need to first manually publish it to GitHub Pages.\nOnce this finishes, the rendered report will be available at https://USERNAME.github.io/REPO (replace USERNAME with your actual GitHub username and REPO with your repo name, e.g. gh-actions-sandbox.)\nNow, add the GHA workflow to your repo and it will keep your website up to date.\nThe first time this workflow ran, it took several minutes to complete (here, 6 minutes and 30 seconds). The main bottleneck occurs when installing R packages.\nHowever, the setup-r-dependencies action caches the R packages3, so subsequent runs are significantly faster.\nTake a look at the GitHub Docs for more information on caching dependencies to improve workflow runtime.4",
     "crumbs": [
       "Learn by example",
       "Rendering documents"
@@ -48,7 +48,7 @@
     "href": "sections/docs.html#more-workflows-for-rendering-documents",
     "title": "Rendering documents",
     "section": "More workflows for rendering documents",
-    "text": "More workflows for rendering documents\nIn this example, we rendered a simple Quarto report. There are many other examples workflows you can use to render documents for websites, books, presentations, and more. This demo itself is a quarto website4. See more examples below:\n\nquarto examples (Quarto) https://github.com/quarto-dev/quarto-actions/tree/main/examples\nquarto docs (CCBR) https://github.com/CCBR/actions/blob/main/examples/docs-quarto.yml\nmkdocs (CCBR) https://github.com/CCBR/actions/blob/main/examples/docs-mkdocs.yml\nR Markdown (r-lib) https://github.com/r-lib/actions/blob/v2-branch/examples/render-rmarkdown.yaml",
+    "text": "More workflows for rendering documents\nIn this example, we rendered a simple Quarto report. There are many other examples workflows you can use to render documents for websites, books, presentations, and more. This demo itself is a quarto website5. See more examples below:\n\nquarto examples (Quarto) https://github.com/quarto-dev/quarto-actions/tree/main/examples\nquarto docs (CCBR) https://github.com/CCBR/actions/blob/main/examples/docs-quarto.yml\nmkdocs (CCBR) https://github.com/CCBR/actions/blob/main/examples/docs-mkdocs.yml\nR Markdown (r-lib) https://github.com/r-lib/actions/blob/v2-branch/examples/render-rmarkdown.yaml",
     "crumbs": [
       "Learn by example",
       "Rendering documents"
@@ -59,7 +59,7 @@
     "href": "sections/docs.html#footnotes",
     "title": "Rendering documents",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nThis document was adapted from an example in the Palmer Penguins documentation https://allisonhorst.github.io/palmerpenguins/articles/examples.html↩︎\nSee the docs for r-lib’s setup-r-dependencies action for more information: https://github.com/r-lib/actions/tree/v2-branch/setup-r-dependencies↩︎\nCaching dependencies to speed up workflows: https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows↩︎\nGHA worfklow for this very website https://github.com/kelly-sovacool/gh-actions-demo/blob/main/.github/workflows/docs-quarto.yml↩︎",
+    "text": "Footnotes\n\n\nDocumentating Your Analysis with Quarto: https://bioinformatics.ccr.cancer.gov/btep/classes/documenting-your-analysis-with-quarto↩︎\nThis document was adapted from an example in the Palmer Penguins documentation https://allisonhorst.github.io/palmerpenguins/articles/examples.html↩︎\nSee the docs for r-lib’s setup-r-dependencies action for more information: https://github.com/r-lib/actions/tree/v2-branch/setup-r-dependencies↩︎\nCaching dependencies to speed up workflows: https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows↩︎\nGHA worfklow for this very website https://github.com/kelly-sovacool/gh-actions-demo/blob/main/.github/workflows/docs-quarto.yml↩︎",
     "crumbs": [
       "Learn by example",
       "Rendering documents"
@@ -146,7 +146,7 @@
     "href": "index.html#footnotes",
     "title": "Welcome!",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nhttps://bioinformatics.ccr.cancer.gov/btep/classes/version-control-with-git↩︎\nhttps://bioinformatics.ccr.cancer.gov/btep/classes/version-control-using-github-and-git↩︎"
+    "text": "Footnotes\n\n\nVersion control with Git https://bioinformatics.ccr.cancer.gov/btep/classes/version-control-with-git↩︎\nVersion control using GitHub https://bioinformatics.ccr.cancer.gov/btep/classes/version-control-using-github-and-git↩︎"
   },
   {
     "objectID": "sections/conclusion.html",
@@ -263,7 +263,7 @@
     "href": "sections/ghapi.html",
     "title": "GitHub API",
     "section": "",
-    "text": "The GitHub CLI1 (gh) is a command-line interface to GitHub right from your terminal. Anything the gh CLI can do, you can do with it in GitHub Actions – it is pre-installed on all runners.\nLet’s try automatically adding an issue comment when a label is added to the issue.2\nCreate an issue in your repo and add the “help wanted” label. Go the the Actions tab and see if the workflow is running. Once it completes, go back to your issue – did it create the comment like you expected?\nPeruse the GitHub CLI manual. What other processes could you automate for managining issues, PRs, and projects?",
+    "text": "The GitHub CLI1 (gh) is a command-line interface to GitHub right from your terminal. Anything the gh CLI can do, you can do with it in GitHub Actions – it is pre-installed on all runners.\nLet’s try automatically adding an issue comment when a label is added to the issue.2\nCreate an issue in your repo and add the “help wanted” label. Go the the Actions tab and see if the workflow is running. Once it completes, go back to your issue – did it create the comment like you expected?\nPeruse the GitHub CLI manual. What other processes could you automate for managing issues, PRs, and projects?",
     "crumbs": [
       "Learn by example",
       "GitHub API"

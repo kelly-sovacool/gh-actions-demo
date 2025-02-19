@@ -245,8 +245,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>You can render documents such as Quarto and R Markdown notebooks and publish the outputs with GitHub Pages. Analysis notebooks, scheduled reports with data crunched from external databases, and documentation websites for software can all be published automatically with GHA &amp; Pages.</p>
-<p>Take a look at the example quarto document: <a href="https://github.com/kelly-sovacool/gh-actions-sandbox/blob/main/quarto-report/notebook.qmd"><code>quarto-report/notebook.qmd</code></a><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Let’s write a workflow to render this document and publish it to the web:</p>
+<p>You can render documents such as Quarto<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, R Markdown, and Jupyter notebooks and publish the outputs with GitHub Pages. Analysis notebooks, scheduled reports that crunch data from external databases, and documentation websites for software can all be published automatically with GHA &amp; Pages.</p>
+<p>Take a look at the example quarto document: <a href="https://github.com/kelly-sovacool/gh-actions-sandbox/blob/main/quarto-report/notebook.qmd"><code>quarto-report/notebook.qmd</code></a><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Let’s write a workflow to render this document and publish it to the web:</p>
 <p><a href="https://github.com/kelly-sovacool/gh-actions-sandbox/tree/main/.github/workflows/render-quarto.yml"><i class="fa-brands fa-github" aria-label="github"></i></a></p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -350,17 +350,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>The setup-r-dependencies step took 5.5 minutes to complete</figcaption>
 </figure>
 </div>
-<p>However, the <code>setup-r-dependencies</code> action caches the R packages<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, so subsequent runs are significantly faster.</p>
+<p>However, the <code>setup-r-dependencies</code> action caches the R packages<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, so subsequent runs are significantly faster.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../img/quarto-R-deps-2.png" class="img-fluid figure-img"></p>
 <figcaption>In the second run, the runtime reduced dramatically to 1 minute 16 seconds total</figcaption>
 </figure>
 </div>
-<p>Take a look at the <a href="https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows">GitHub Docs</a> for more information on caching dependencies to improve workflow runtime.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
+<p>Take a look at the <a href="https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows">GitHub Docs</a> for more information on caching dependencies to improve workflow runtime.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
 <section id="more-workflows-for-rendering-documents" class="level2">
 <h2 class="anchored" data-anchor-id="more-workflows-for-rendering-documents">More workflows for rendering documents</h2>
-<p>In this example, we rendered a simple Quarto report. There are many other examples workflows you can use to render documents for websites, books, presentations, and more. This demo itself is a quarto website<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. See more examples below:</p>
+<p>In this example, we rendered a simple Quarto report. There are many other examples workflows you can use to render documents for websites, books, presentations, and more. This demo itself is a quarto website<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. See more examples below:</p>
 <ul>
 <li>quarto examples (Quarto) <a href="https://github.com/quarto-dev/quarto-actions/tree/main/examples" class="uri">https://github.com/quarto-dev/quarto-actions/tree/main/examples</a></li>
 <li>quarto docs (CCBR) <a href="https://github.com/CCBR/actions/blob/main/examples/docs-quarto.yml" class="uri">https://github.com/CCBR/actions/blob/main/examples/docs-quarto.yml</a></li>
@@ -375,10 +375,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>This document was adapted from an example in the Palmer Penguins documentation <a href="https://allisonhorst.github.io/palmerpenguins/articles/examples.html" class="uri">https://allisonhorst.github.io/palmerpenguins/articles/examples.html</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>See the docs for r-lib’s <code>setup-r-dependencies</code> action for more information: <a href="https://github.com/r-lib/actions/tree/v2-branch/setup-r-dependencies" class="uri">https://github.com/r-lib/actions/tree/v2-branch/setup-r-dependencies</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>Caching dependencies to speed up workflows: <a href="https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows" class="uri">https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>GHA worfklow for this very website <a href="https://github.com/kelly-sovacool/gh-actions-demo/blob/main/.github/workflows/docs-quarto.yml" class="uri">https://github.com/kelly-sovacool/gh-actions-demo/blob/main/.github/workflows/docs-quarto.yml</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p><em>Documentating Your Analysis with Quarto</em>: <a href="https://bioinformatics.ccr.cancer.gov/btep/classes/documenting-your-analysis-with-quarto" class="uri">https://bioinformatics.ccr.cancer.gov/btep/classes/documenting-your-analysis-with-quarto</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>This document was adapted from an example in the Palmer Penguins documentation <a href="https://allisonhorst.github.io/palmerpenguins/articles/examples.html" class="uri">https://allisonhorst.github.io/palmerpenguins/articles/examples.html</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>See the docs for r-lib’s <code>setup-r-dependencies</code> action for more information: <a href="https://github.com/r-lib/actions/tree/v2-branch/setup-r-dependencies" class="uri">https://github.com/r-lib/actions/tree/v2-branch/setup-r-dependencies</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Caching dependencies to speed up workflows: <a href="https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows" class="uri">https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>GHA worfklow for this very website <a href="https://github.com/kelly-sovacool/gh-actions-demo/blob/main/.github/workflows/docs-quarto.yml" class="uri">https://github.com/kelly-sovacool/gh-actions-demo/blob/main/.github/workflows/docs-quarto.yml</a><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
