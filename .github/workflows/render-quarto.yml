@@ -6,6 +6,7 @@ on:
     branches: main
     paths:
       - "quarto-report/**"
+      - ".github/workflows/render-quarto.yml"
 
 permissions:
   contents: write
