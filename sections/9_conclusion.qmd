@@ -7,7 +7,7 @@ task you want.
 Once you understand the basics, the best way to get started is by re-using
 workflows from others.
 We have a repository of example workflows & actions that we re-use often for
-[CCBR]((https://github.com/ccbr/) projects. 
+[CCBR](https://github.com/ccbr/) projects. 
 Take a look at [CCBR Actions](https://github.com/ccbr/actions) for example
 workflows that you can start using in your repositories right away.
 
