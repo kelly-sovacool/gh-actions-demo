@@ -9,6 +9,7 @@ build-backend = 'setuptools.build_meta'
 [project]
 name = 'mypkg'
 description = "demo python package"
+version = '0.1.0'
 authors = [
     {name = "Kelly Sovacool", email = "kelly.sovacool@nih.gov"},
 ]
