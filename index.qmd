@@ -24,6 +24,6 @@ This demo assumes you:
 
 If you'd like to code along with this demo, 
 fork [the sandbox repo](https://github.com/kelly-sovacool/gh-actions-sandbox/fork)
-and and [clone it](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
+and [clone it](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
 During the demo you'll create files, push changes to your GitHub repo,
 and see how GitHub Actions works by example.

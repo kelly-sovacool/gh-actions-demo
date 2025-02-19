@@ -152,7 +152,7 @@ navigate to the Actions tab and click on the workflow name.
 A button will appear: `run workflow`. 
 Click it and select the branch you want to run on.
 Refresh the page and you will see your manually triggered run in the log.
-What is the value in `github.event` for the `workflow_dispatch` trigger?
+What is the value in `github.event_name` when you run the workflow manually?
 
 ## What now?
 

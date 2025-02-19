@@ -2,9 +2,19 @@
 title: "Snakemake example"
 ---
 
-Dry-run & lint a Snakemake workflow
+You can run bioinformatics pipelines in GitHub Actions.
+You can write unit tests like you would for regular software.
+While testing is strongly encouraged for re-usable pipelines in particular,
+sometimes unit testing is not a high priority, such as for one-off analysis
+projects.
+A more basic check you can do is make sure your pipeline has correct syntax.
+For Snakemake, you can dry-run and lint the Snakemake workflow to ensure it passes
+minimal quality standards.
 
-Take a look at the example Snakemake workflow: `snakemake-workflow/workflow/Snakefile`
+Take a look at the example Snakemake workflow: [`snakemake-workflow/workflow/Snakefile`](https://github.com/kelly-sovacool/gh-actions-sandbox/blob/main/snakemake-workflow/workflow/Snakefile)
+
+We'll use GitHub Actions workflow to check that our Snakemake workflow can 
+complete a dry-run and that it passes Snakemake's linting checks.
 
 [{{< fa brands github >}}](https://github.com/kelly-sovacool/gh-actions-sandbox/tree/main/.github/workflows/build-python.yml)
 
@@ -40,4 +50,16 @@ jobs:
 2. Dry-run the Snakemake workflow. If the dry run completes successfully, you at least know there aren't syntax errors in your Snakemake code.
 3. Lint the workflow with Snakemake's built-in linter to ensure code quality.
 
-Beware: github's default runners are limited to 4 CPUs and 16 GB RAM^[<https://docs.github.com/en/enterprise-cloud@latest/actions/using-github-hosted-runners/using-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories>].
+:::{.callout-caution title="Resource limits"}
+GitHub's default runners are limited to 4 CPUs and 16 GB RAM^[<https://docs.github.com/en/enterprise-cloud@latest/actions/using-github-hosted-runners/using-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories>].
+:::
+
+Add this new GHA workflow to your repo and see what happens.
+Do both the dry-run and lint steps complete successfully?
+Do any changes need to be made to the Snakemake workflow make these steps pass?
+
+## More workflows for bioinformatics pipelines
+
+- [Snakemake](https://github.com/CCBR/actions/blob/main/examples/build-snakemake.yml) (CCBR)
+- [Nextflow](https://github.com/CCBR/actions/blob/main/examples/build-nextflow.yml) (CCBR)
+- [Nextflow](https://github.com/nf-core/rnaseq/blob/master/.github/workflows/ci.yml) (nf-core)
