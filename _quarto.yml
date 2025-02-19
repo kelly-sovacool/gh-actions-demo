@@ -10,7 +10,14 @@ website:
   page-navigation: true
   sidebar:
     contents:
-      - auto: "sections/**.qmd"
+      - sections/intro.qmd
+      - section: "Learn by example"
+        contents:
+            - sections/ci.qmd
+            - sections/snakemake.qmd
+            - sections/ghapi.qmd
+            - sections/docs.qmd
+      - sections/conclusion.qmd
   navbar:
     right: 
       - icon: github
@@ -30,3 +37,4 @@ format:
   fnl-html
 
 code-annotations: below # select
+engine: knitr

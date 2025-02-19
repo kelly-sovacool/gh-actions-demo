@@ -24,13 +24,13 @@ Workflows are defined as YAML files in a specific directory in your repo: `.gith
 
 Create this directory if you haven't already:
 
-```sh
+```bash
 mkdir -p .github/workflows/
 ```
 
 Create a YAML file:
 
-```sh
+```bash
 touch .github/workflows/hello-world.yml
 ```
 
@@ -40,7 +40,7 @@ And open it in your favorite text editor.
 
 [{{< fa brands github >}}](https://github.com/kelly-sovacool/gh-actions-sandbox/tree/main/.github/workflows/hello-world.yml)
 
-```yaml
+```{.yaml filename=".github/workflows/hello-world.yml"}
 name: Hello world! # <1>
 
 on: push # <2>
@@ -68,16 +68,18 @@ Copy the above YAML code to `.github/workflows/hello-world.yml` and save the fil
 
 Add, commit, and push your workflow file to GitHub:
 
-```sh
+```bash
 git add .github/workflows/hello-world.yml
 git commit -m 'ci: create hello-world workflow'
 git push
 ```
 
-In a web browser, navigate to your repo's **actions** tab.
+In a web browser, navigate to your repo's **Actions** tab.
 On the left sidebar you'll see the name of your action: click on it and you'll
 see a list of the workflow runs (i.e. times it was executed).
 Click on the most recent run to see the details of the execution and the logs for each step.
+
+![log for the "Hello world" workflow](/img/hello-world.png)
 
 ## Actions steps
 
@@ -87,7 +89,7 @@ many that are maintained by GitHub.
 
 [{{< fa brands github >}}](https://github.com/kelly-sovacool/gh-actions-sandbox/tree/main/.github/workflows/hello-checkout.yml)
 
-```yaml
+```{.yaml filename=".github/workflows/hello-checkout.yml"}
 name: hello checkout
 
 on: push
@@ -105,7 +107,7 @@ jobs:
 2. Name of the run step (optional).
 3. List the files in the repo, which was checked out to the `github.workspace` variable.
 
-`github.workspace` is a variable defined by GHA^[<https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/accessing-contextual-information-about-workflow-runs#about-contexts>]. 
+`github.workspace` is a variable defined by GHA^[Contexts & variables <https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/accessing-contextual-information-about-workflow-runs#about-contexts>]. 
 You can access variables in workflows with a dollar sign and double curly braces: `${{ variable }}`.
 
 The current working directory is `github.workspace` by default, and this is where your repo is checked out.
@@ -114,13 +116,13 @@ The current working directory is `github.workspace` by default, and this is wher
 
 So far we've used the `push` trigger, which triggers the workflow to run every
 time a commit is pushed to the repo on GitHub.
-There are a myriad of triggers^[<https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows>]
+There are a myriad of triggers^[Events that trigger workflows <https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows>]
 you can use, and you can mix-and-mitch in the same workflow.
 Here are a few of the most common triggers:
 
 [{{< fa brands github >}}](https://github.com/kelly-sovacool/gh-actions-sandbox/tree/main/.github/workflows/demo-triggers.yml)
 
-```yaml
+```{.yaml filename=".github/workflows/demo-triggers.yml"}
 name: demo triggers
 
 on:
@@ -141,9 +143,9 @@ jobs:
         run: |
           echo "Event: ${{ github.event_name }}" # <4>
 ```
-1. Triggers the workflow on push or pull request events but only for the "main" branch.
+1. Triggers the workflow on push or pull request events, but only for the "main" branch.
 2. Allows you to run this workflow manually from the Actions tab.
-3. Triggers the workflow on a cron schedule^[<https://crontab.guru/>]. This one runs at 12:00 UTC on every Monday.
+3. Triggers the workflow on a cron schedule^[Website to help understand cron schedule syntax <https://crontab.guru/>]. This one runs at 12:00 UTC on every Monday.
 4. Print the event that triggered the run.
 
 Let's try running this workflow manually!
@@ -153,6 +155,10 @@ A button will appear: `run workflow`.
 Click it and select the branch you want to run on.
 Refresh the page and you will see your manually triggered run in the log.
 What is the value in `github.event_name` when you run the workflow manually?
+
+![log for "demo triggers" when triggered by a `push`](/img/demo-triggers-push.png)
+
+![log for "demo triggers" when trigged by a manual `workflow_dispatch`](/img/demo-triggers-manual.png)
 
 ## What now?
 

@@ -1,0 +1,110 @@
+---
+title: "Rendering documents"
+---
+
+You can render documents such as Quarto and R Markdown notebooks and publish the
+outputs with GitHub Pages.
+Analysis notebooks, scheduled reports with data crunched from external
+databases, and documentation websites for software can all be published
+automatically with GHA & Pages.
+
+Take a look at the example quarto document: 
+[`quarto-report/notebook.qmd`](https://github.com/kelly-sovacool/gh-actions-sandbox/blob/main/quarto-report/notebook.qmd)^[This document was adapted from an example in the Palmer Penguins documentation <https://allisonhorst.github.io/palmerpenguins/articles/examples.html>].
+Let's write a workflow to render this document and publish it to the web:
+
+[{{< fa brands github >}}](https://github.com/kelly-sovacool/gh-actions-sandbox/tree/main/.github/workflows/render-quarto.yml)
+
+```{.yaml filename=".github/workflows/render-quarto.yml"}
+name: render quarto reports
+
+on:
+  workflow_dispatch:
+  push: # <1>
+    branches: main # <1>
+    paths: # <1>
+      - "quarto-report/**" # <1>
+      - ".github/workflows/render-quarto.yml" # <1>
+
+permissions: # <2>
+  contents: write # <2>
+  pages: write # <2>
+
+jobs:
+  render-quarto:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Quarto # <3>
+        uses: quarto-dev/quarto-actions/setup@v2 # <3>
+
+      - uses: r-lib/actions/setup-r@v2 # <4>
+      - uses: r-lib/actions/setup-r-dependencies@v2 # <4>
+        with: # <4>
+          packages: | # <4>
+            any::ggplot2 # <4>
+            any::palmerpenguins # <4>
+            any::rmarkdown # <4>
+
+      - name: Run R script # <5>
+        run: | # <5>
+          print("Hello, world!") # <5>
+        shell: Rscript {0} # <5>
+
+      - name: Publish to GitHub Pages (and render) # <6>
+        uses: quarto-dev/quarto-actions/publish@v2 # <6>
+        with: # <6>
+          target: gh-pages # <6>
+          path: quarto-report/ # <6>
+        env: # <7>
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # <7>
+```
+1. Run this workflow on pushes to main _only if_ files in `quarto-report/` are changed _or_ this workflow file changes.
+2. Set the `permissions` to allow this workflow to write content to the repo and github pages. These permissions are disabled by default.
+3. Install Quarto.
+4. Install R and a few R packages.
+5. You aren't limited to only bash in `run` steps. You can set `shell` to run other scripting languages too! `Rscript {0}` means the contents of `run` will be passed to `Rscript` at runtime.
+6. Render the quarto project in `quarto-report`, push it to the `gh-pages` branch, and publish it to github pages.
+7. Pass the default GitHub Token with elevated permissions to the quarto publish action, so it will be able to write content to the repo and github pages.
+
+Before you can use this workflow, we'll need to first manually publish it to GitHub Pages.
+
+```bash
+quarto publish gh-pages quarto-report/
+```
+
+Once this finishes, the rendered report will be available at `https://USERNAME.github.io/REPO`
+(replace `USERNAME` with your actual GitHub username and `REPO` with your repo name,
+e.g. `gh-actions-sandbox`.)
+
+![The rendered report. View it at `https://USERNAME.github.io/REPO`.](/img/quarto-html.png)
+
+Now, add the GHA workflow to your repo and it will keep your website up to date.
+
+![workflow runs for quarto action](/img/quarto-gha.png)
+
+The first time this workflow ran, it took several minutes to complete (here, 6 minutes and 30 seconds).
+The main bottleneck occurs when installing R packages.
+
+![The setup-r-dependencies step took 5.5 minutes to complete](/img/quarto-R-deps-1.png)
+
+However, the `setup-r-dependencies` action caches the R packages^[See the docs for r-lib's `setup-r-dependencies` action for more information: <https://github.com/r-lib/actions/tree/v2-branch/setup-r-dependencies>], so subsequent
+runs are significantly faster.
+
+![In the second run, the runtime reduced dramatically to 1 minute 16 seconds total](/img/quarto-R-deps-2)
+
+Take a look at the [GitHub Docs](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows) for more information on caching dependencies to improve workflow runtime.^[Caching dependencies to speed up workflows: <https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows>]
+
+## More workflows for rendering documents
+
+In this example, we rendered a simple Quarto report.
+There are many other examples workflows you can use to render documents
+for websites, books, presentations, and more.
+This demo itself is a quarto website^[GHA worfklow for this very website <https://github.com/kelly-sovacool/gh-actions-demo/blob/main/.github/workflows/docs-quarto.yml>].
+See more examples below:
+
+- quarto examples (Quarto) <https://github.com/quarto-dev/quarto-actions/tree/main/examples>
+- quarto docs (CCBR) <https://github.com/CCBR/actions/blob/main/examples/docs-quarto.yml>
+- mkdocs (CCBR) <https://github.com/CCBR/actions/blob/main/examples/docs-mkdocs.yml>
+- R Markdown (r-lib) <https://github.com/r-lib/actions/blob/v2-branch/examples/render-rmarkdown.yaml>

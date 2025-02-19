@@ -2,16 +2,16 @@
 title: "GitHub API"
 ---
 
-The GitHub CLI^[<https://cli.github.com/manual/>] (`gh`) is a command-line
+The GitHub CLI^[GitHub CLI manual <https://cli.github.com/manual/>] (`gh`) is a command-line
 interface to GitHub right from your terminal.
 Anything the `gh` CLI can do, you can do with it in GitHub Actions -- it is
 pre-installed on all runners.
 
-Let's try automatically adding an issue comment when a label is added to the issue.^[adapted from <https://docs.github.com/en/actions/use-cases-and-examples/project-management/commenting-on-an-issue-when-a-label-is-added>]
+Let's try automatically adding an issue comment when a label is added to the issue.^[This action was adapted from <https://docs.github.com/en/actions/use-cases-and-examples/project-management/commenting-on-an-issue-when-a-label-is-added>]
 
 [{{< fa brands github >}}](https://github.com/kelly-sovacool/gh-actions-sandbox/tree/main/.github/workflows/add-comment.yml)
 
-```yaml
+```{.yaml filename=".github/workflows/add-comment.yml"}
 name: Add comment
 
 on: # <1>
@@ -40,11 +40,14 @@ jobs:
 1. Run this workflow when an issue is labeled.
 2. Only run this job if the issues was labeled with "help wanted".
 3. Use the gh cli to add a comment to the issue. `$NUMBER` and `$BODY` are filled in from the environment variables specified by `env`.
-4. Set the `GH_TOKEN` environment variable to the default `GITHUB_TOKEN` secret^[<https://docs.github.com/en/actions/security-for-github-actions/security-guides/automatic-token-authentication>], which is automatically created by GitHub for each workflow run. This token is used by the `gh` CLI to authenticate and comment on the issue. Permissions are limited by default^[<https://docs.github.com/en/actions/security-for-github-actions/security-guides/automatic-token-authentication#permissions-for-the-github_token>].
-5. The name of this repo, which is a required environment variable for `gh` CLI^[<https://cli.github.com/manual/gh_help_environment>].
+4. Set the `GH_TOKEN` environment variable to the default `GITHUB_TOKEN` secret^[`GITHUB_TOKEN` <https://docs.github.com/en/actions/security-for-github-actions/security-guides/automatic-token-authentication>], which is automatically created by GitHub for each workflow run. This token is used by the `gh` CLI to authenticate and comment on the issue. Permissions are limited by default^[Default permissions for `GITHUB_TOKEN` <https://docs.github.com/en/actions/security-for-github-actions/security-guides/automatic-token-authentication#permissions-for-the-github_token>].
+5. The name of this repo, which is a required environment variable for `gh` CLI^[Environment variables needed by `gh` cli <https://cli.github.com/manual/gh_help_environment>].
 6. The issue number from the event that triggered this workflow run.
 7. The body of the comment to add. Use markdown syntax just like you would if you were typing an issue comment through the web interface.
 
 Create an issue in your repo and add the "help wanted" label.
 Go the the Actions tab and see if the workflow is running.
 Once it completes, go back to your issue -- did it create the comment like you expected?
+
+Peruse the [GitHub CLI manual](https://cli.github.com/manual/). 
+What other processes could you automate for managining issues, PRs, and projects?
