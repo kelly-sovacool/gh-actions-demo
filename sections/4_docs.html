@@ -228,7 +228,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>You can render documents such as Quarto and R Markdown notebooks and publish the outputs with GitHub Pages. Take a look at the example quarto document: <code>quarto-report/notebook.qmd</code>.</p>
+<p>You can render documents such as Quarto and R Markdown notebooks and publish the outputs with GitHub Pages. Analysis notebooks, scheduled reports from external databases, and documentation websites for software can all be published automatically with GHA &amp; Pages. Take a look at the example quarto document: <code>quarto-report/notebook.qmd</code>.</p>
 <p><a href="https://github.com/kelly-sovacool/gh-actions-sandbox/tree/main/.github/workflows/render-quarto.yml"><i class="fa-brands fa-github" aria-label="github"></i></a></p>
 <div class="sourceCode" id="annotated-cell-1"><pre class="sourceCode yaml code-annotation-code code-with-copy code-annotated"><code class="sourceCode yaml"><span id="annotated-cell-1-1"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> render quarto reports</span></span>
 <span id="annotated-cell-1-2"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -306,6 +306,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </dl>
 <p>Before you can use this workflow, we’ll need to first manually publish to GitHub Pages.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> publish gh-pages quarto-report/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The rendered report will be available at <code>https://USERNAME.github.io/REPO</code>. After the initial publish, your GHA workflow will keep your website up to date.</p>
 
 
 
