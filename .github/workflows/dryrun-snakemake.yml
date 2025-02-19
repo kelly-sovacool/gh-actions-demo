@@ -1,5 +1,4 @@
 name: snakemake
-# beware, github's default Linux runners are limited to 4 CPUs and 16 GB RAM
 
 on:
   push:
@@ -16,7 +15,6 @@ jobs:
       image: snakemake/snakemake:v7.32.4
     steps:
       - uses: actions/checkout@v4
-      #- uses: docker://snakemake/snakemake:v7.32.4
       - name: Dry-run
         run: |
           snakemake \

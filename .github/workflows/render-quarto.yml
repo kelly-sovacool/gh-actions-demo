@@ -5,7 +5,7 @@ on:
   push:
     branches: main
     paths:
-      - "report/**"
+      - "quarto-report/**"
 
 permissions:
   contents: write
@@ -33,6 +33,6 @@ jobs:
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
-          path: report/
+          path: quarto-report/
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
