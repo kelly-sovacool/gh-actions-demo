@@ -16,4 +16,4 @@ jobs:
       - uses: actions/checkout@v4
       - name: 
         run: |
-          echo "Event: ${{ github.event }}"
+          echo "Event: ${{ github.event_name }}"
