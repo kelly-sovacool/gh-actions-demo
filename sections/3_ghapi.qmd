@@ -1,0 +1,48 @@
+---
+title: "GitHub API"
+---
+
+The GitHub CLI^[<https://cli.github.com/manual/>] is installed on all runners.
+Anything the `gh` CLI can do, you can do with it in GitHub Actions.
+
+Adding an issue comment when a label is added^[adapted from <https://docs.github.com/en/actions/use-cases-and-examples/project-management/commenting-on-an-issue-when-a-label-is-added>]
+
+[{{< fa brands github >}}](https://github.com/kelly-sovacool/gh-actions-sandbox/tree/main/.github/workflows/add-comment.yml)
+
+```yaml
+name: Add comment
+
+on: # <1>
+  issues: # <1>
+    types: # <1>
+      - labeled # <1>
+
+jobs:
+  add-comment:
+    if: github.event.label.name == 'help wanted' # <2>
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Add comment # <3>
+        run: gh issue comment "$NUMBER" --body "$BODY" # <3>
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} # <4>
+          GH_REPO: ${{ github.repository }} # <5>
+          NUMBER: ${{ github.event.issue.number }} # <6>
+          BODY: > # <7>
+            This issue is available for anyone to work on. # <7>
+            **Make sure to reference this issue in your pull request.** # <7>
+            :sparkles: Thank you for your contribution! :sparkles: # <7>
+```
+1. Run this workflow when an issue is labeled.
+2. Only run this job if the issues was labeled with "help wanted".
+3. Use the gh cli to add a comment to the issue. `$NUMBER` and `$BODY` are filled in from the environment variables specified by `env`.
+4. Set the `GH_TOKEN` environment variable to the default `GITHUB_TOKEN` secret^[<https://docs.github.com/en/actions/security-for-github-actions/security-guides/automatic-token-authentication>], which is automatically created by GitHub for each workflow run. This token is used by the `gh` CLI to authenticate and comment on the issue. Permissions are limited by default^[<https://docs.github.com/en/actions/security-for-github-actions/security-guides/automatic-token-authentication#permissions-for-the-github_token>].
+5. The name of this repo, which is a required environment variable for `gh` CLI^[<https://cli.github.com/manual/gh_help_environment>].
+6. The issue number from the event that triggered this workflow run.
+7. The body of the comment to add. Use markdown syntax just like you would if you were typing an issue comment through the web interface.
+
+Create an issue in your repo and add the "help wanted" label.
+Go the the Actions tab and see if the workflow is running.
+Once it completes, go back to your issue -- did it create the comment like you expected?

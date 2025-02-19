@@ -1,0 +1,30 @@
+---
+title: "Welcome!"
+author: "[Kelly Sovacool](https://sovacool.dev)"
+date: 2025-02-19
+---
+
+GitHub is a version control platform for tracking, sharing, and collaborating on
+software projects of all kinds. One of GitHub's most powerful features is GitHub
+Actions, an automation platform that executes lightweight workflows for
+continuous integration & deployment. In this demonstration, we'll show you the
+basics of creating GitHub Actions workflows and walk through examples to help
+you get started using GitHub Actions in your own repositories. Whether you are a
+software engineer or an analyst, GitHub Actions can help you automate repetitive
+tasks like formatting code, running tests, publishing reports, and so much more!
+
+## Audience
+
+This demo assumes you:
+
+- write code, whether for analysis projects or for software development
+- are already familiar with git^[<https://bioinformatics.ccr.cancer.gov/btep/classes/version-control-with-git>] and GitHub^[<https://bioinformatics.ccr.cancer.gov/btep/classes/version-control-using-github-and-git>]
+
+## Code along
+
+If you'd like to code along with this demo, 
+[create a new GitHub repository](https://github.com/new)
+and [clone it](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
+to serve as a sandbox. 
+During the demo you'll create files, push changes to your GitHub repo,
+and see how GitHub Actions works by example.

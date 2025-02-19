@@ -1,0 +1,20 @@
+---
+title: "Conclusion"
+---
+
+GitHub Actions is a powerful platform for CI/CD and automating just about any
+task you want.
+Once you understand the basics, the best way to get started is by re-using
+workflows from others.
+We have a repository of example workflows & actions that we re-use often for
+[CCBR]((https://github.com/ccbr/) projects. 
+Take a look at [CCBR Actions](https://github.com/ccbr/actions) for example
+workflows that you can start using in your repositories right away.
+
+## Resources
+
+- GitHub Docs <https://docs.github.com/en/actions>
+- CCBR Actions <https://github.com/ccbr/actions>
+- Actions for R <https://github.com/r-lib/actions/>
+- Actions for Quarto <https://github.com/quarto-dev/quarto-actions>
+- VS Code extension <https://marketplace.visualstudio.com/items?itemName=github.vscode-github-actions>

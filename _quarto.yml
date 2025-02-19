@@ -1,0 +1,32 @@
+project:
+  type: website
+
+website:
+  title: "Introduction to GitHub Actions for Analysts and Engineers"
+  repo-url: https://github.com/kelly-sovacool/gh-actions-demo
+  repo-actions: [edit, source, issue]
+  search:
+    location: sidebar
+  page-navigation: true
+  sidebar:
+    contents:
+      - auto: "sections/**.qmd"
+  navbar:
+    right: 
+      - icon: github
+        href: https://github.com/kelly-sovacool/gh-actions-demo
+        aria-label: "GitHub repository"
+
+  # page-footer:
+  #   background: black
+  #   foreground: white
+  #   left: |
+  #     [![](/_extensions/fnl/fnl-logo-dark.png){height=70px}](https://frederick.cancer.gov/research/science-areas/bioinformatics-and-computational-science/advanced-biomedical-computational-science)
+  #   center: |
+  #     Created for the
+  #     [CCR Bioinformatics Training & Education Program](https://bioinformatics.ccr.cancer.gov/btep/)
+
+format:
+  fnl-html
+
+code-annotations: select

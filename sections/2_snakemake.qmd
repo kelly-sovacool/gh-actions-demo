@@ -1,0 +1,43 @@
+---
+title: "Snakemake example"
+---
+
+Dry-run & lint a Snakemake workflow
+
+Take a look at the example Snakemake workflow: `snakemake-workflow/workflow/Snakefile`
+
+[{{< fa brands github >}}](https://github.com/kelly-sovacool/gh-actions-sandbox/tree/main/.github/workflows/build-python.yml)
+
+```yaml
+name: snakemake
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+
+jobs:
+  dryrun-lint:
+    runs-on: ubuntu-latest
+    container: # <1>
+      image: snakemake/snakemake:v7.32.4 # <1>
+    steps:
+      - uses: actions/checkout@v4
+      - name: Dry-run # <2>
+        run: | # <2>
+          snakemake \ # <2>
+            -s ./snakemake-workflow/workflow/Snakefile \ # <2>
+            --dry-run # <2>
+      - name: Lint # <3>
+        run: | # <3>
+          snakemake \ # <3>
+            -s ./snakemake-workflow/workflow/Snakefile \ # <3>
+            --lint # <3>
+```
+1. Specify a Docker container for all steps in this job to run inside.^[<https://docs.github.com/en/actions/writing-workflows/choosing-where-your-workflow-runs/running-jobs-in-a-container>]
+2. Dry-run the Snakemake workflow. If the dry run completes successfully, you at least know there aren't syntax errors in your Snakemake code.
+3. Lint the workflow with Snakemake's built-in linter to ensure code quality.
+
+Beware: github's default runners are limited to 4 CPUs and 16 GB RAM^[<https://docs.github.com/en/enterprise-cloud@latest/actions/using-github-hosted-runners/using-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories>].

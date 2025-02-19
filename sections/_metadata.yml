@@ -1,0 +1,4 @@
+execute:
+  freeze: auto
+  eval: true
+  echo: true
