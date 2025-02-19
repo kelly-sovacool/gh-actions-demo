@@ -10,6 +10,7 @@ website:
   page-navigation: true
   sidebar:
     contents:
+      - index.qmd
       - sections/intro.qmd
       - section: "Learn by example"
         contents:

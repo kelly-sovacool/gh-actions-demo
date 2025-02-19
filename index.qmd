@@ -1,5 +1,5 @@
 ---
-title: "Welcome!"
+title: "Welcome"
 author: "[Kelly Sovacool](https://sovacool.dev)"
 date: 2025-02-19
 ---
