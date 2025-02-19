@@ -123,30 +123,42 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Welcome!",
+    "title": "Welcome",
     "section": "",
-    "text": "GitHub is a version control platform for tracking, sharing, and collaborating on software projects of all kinds. One of GitHub’s most powerful features is GitHub Actions, an automation platform that executes lightweight workflows for continuous integration & deployment. In this demonstration, we’ll show you the basics of creating GitHub Actions workflows and walk through examples to help you get started using GitHub Actions in your own repositories. Whether you are a software engineer or an analyst, GitHub Actions can help you automate repetitive tasks like formatting code, running tests, publishing reports, and so much more!"
+    "text": "GitHub is a version control platform for tracking, sharing, and collaborating on software projects of all kinds. One of GitHub’s most powerful features is GitHub Actions, an automation platform that executes lightweight workflows for continuous integration & deployment. In this demonstration, we’ll show you the basics of creating GitHub Actions workflows and walk through examples to help you get started using GitHub Actions in your own repositories. Whether you are a software engineer or an analyst, GitHub Actions can help you automate repetitive tasks like formatting code, running tests, publishing reports, and so much more!",
+    "crumbs": [
+      "Welcome"
+    ]
   },
   {
     "objectID": "index.html#audience",
     "href": "index.html#audience",
-    "title": "Welcome!",
+    "title": "Welcome",
     "section": "Audience",
-    "text": "Audience\nThis demo assumes you:\n\nwrite code, whether for analysis projects or for software development\nare already familiar with git1 and GitHub2"
+    "text": "Audience\nThis demo assumes you:\n\nwrite code, whether for analysis projects or for software development\nare already familiar with git1 and GitHub2",
+    "crumbs": [
+      "Welcome"
+    ]
   },
   {
     "objectID": "index.html#code-along",
     "href": "index.html#code-along",
-    "title": "Welcome!",
+    "title": "Welcome",
     "section": "Code along",
-    "text": "Code along\nIf you’d like to code along with this demo, fork the sandbox repo and clone it. During the demo you’ll create files, push changes to your GitHub repo, and see how GitHub Actions works by example."
+    "text": "Code along\nIf you’d like to code along with this demo, fork the sandbox repo and clone it. During the demo you’ll create files, push changes to your GitHub repo, and see how GitHub Actions works by example.",
+    "crumbs": [
+      "Welcome"
+    ]
   },
   {
     "objectID": "index.html#footnotes",
     "href": "index.html#footnotes",
-    "title": "Welcome!",
+    "title": "Welcome",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nVersion control with Git https://bioinformatics.ccr.cancer.gov/btep/classes/version-control-with-git↩︎\nVersion control using GitHub https://bioinformatics.ccr.cancer.gov/btep/classes/version-control-using-github-and-git↩︎"
+    "text": "Footnotes\n\n\nVersion control with Git https://bioinformatics.ccr.cancer.gov/btep/classes/version-control-with-git↩︎\nVersion control using GitHub https://bioinformatics.ccr.cancer.gov/btep/classes/version-control-using-github-and-git↩︎",
+    "crumbs": [
+      "Welcome"
+    ]
   },
   {
     "objectID": "sections/conclusion.html",
