@@ -2,9 +2,9 @@
 title: "Rendering documents"
 ---
 
-You can render documents such as Quarto and R Markdown notebooks and publish the
-outputs with GitHub Pages.
-Analysis notebooks, scheduled reports with data crunched from external
+You can render documents such as Quarto^[_Documentating Your Analysis with Quarto_: <https://bioinformatics.ccr.cancer.gov/btep/classes/documenting-your-analysis-with-quarto>],
+R Markdown, and Jupyter notebooks and publish the outputs with GitHub Pages.
+Analysis notebooks, scheduled reports that crunch data from external
 databases, and documentation websites for software can all be published
 automatically with GHA & Pages.
 
