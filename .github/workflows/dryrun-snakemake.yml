@@ -1,4 +1,5 @@
 name: snakemake
+# beware, github's default Linux runners are limited to 4 CPUs and 16 GB RAM
 
 on:
   push:
@@ -22,7 +23,6 @@ jobs:
             -s ./snakemake-workflow/workflow/Snakefile \
             --dry-run
       - name: Lint
-        continue-on-error: true
         run: |
           snakemake \
             -s ./snakemake-workflow/workflow/Snakefile \
