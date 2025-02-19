@@ -3,6 +3,8 @@ title: "Rendering documents"
 ---
 
 You can render documents such as Quarto and R Markdown notebooks and publish the outputs with GitHub Pages.
+Analysis notebooks, scheduled reports from external databases, and documentation
+websites for software can all be published automatically with GHA & Pages.
 Take a look at the example quarto document: `quarto-report/notebook.qmd`.
 
 [{{< fa brands github >}}](https://github.com/kelly-sovacool/gh-actions-sandbox/tree/main/.github/workflows/render-quarto.yml)
@@ -66,3 +68,6 @@ Before you can use this workflow, we'll need to first manually publish to GitHub
 ```sh
 quarto publish gh-pages quarto-report/
 ```
+
+The rendered report will be available at `https://USERNAME.github.io/REPO`.
+After the initial publish, your GHA workflow will keep your website up to date.
