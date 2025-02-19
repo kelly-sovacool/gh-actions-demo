@@ -1,0 +1,220 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome!",
+    "section": "",
+    "text": "GitHub is a version control platform for tracking, sharing, and collaborating on software projects of all kinds. One of GitHub’s most powerful features is GitHub Actions, an automation platform that executes lightweight workflows for continuous integration & deployment. In this demonstration, we’ll show you the basics of creating GitHub Actions workflows and walk through examples to help you get started using GitHub Actions in your own repositories. Whether you are a software engineer or an analyst, GitHub Actions can help you automate repetitive tasks like formatting code, running tests, publishing reports, and so much more!"
+  },
+  {
+    "objectID": "index.html#audience",
+    "href": "index.html#audience",
+    "title": "Welcome!",
+    "section": "Audience",
+    "text": "Audience\nThis demo assumes you:\n\nwrite code, whether for analysis projects or for software development\nare already familiar with git1 and GitHub2"
+  },
+  {
+    "objectID": "index.html#code-along",
+    "href": "index.html#code-along",
+    "title": "Welcome!",
+    "section": "Code along",
+    "text": "Code along\nIf you’d like to code along with this demo, create a new GitHub repository and clone it to serve as a sandbox. During the demo you’ll create files, push changes to your GitHub repo, and see how GitHub Actions works by example."
+  },
+  {
+    "objectID": "index.html#footnotes",
+    "href": "index.html#footnotes",
+    "title": "Welcome!",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nhttps://bioinformatics.ccr.cancer.gov/btep/classes/version-control-with-git↩︎\nhttps://bioinformatics.ccr.cancer.gov/btep/classes/version-control-using-github-and-git↩︎"
+  },
+  {
+    "objectID": "sections/1_ci.html",
+    "href": "sections/1_ci.html",
+    "title": "Continuous Integration",
+    "section": "",
+    "text": "Unit testing is one of the most useful practices you can incorporate to improve your code’s quality. Testing is so important that it is best to automate the process so your tests run every time changes are made. This way, if something breaks, you can identify exactly when the code stopped working and get to the bottom of it more easily.",
+    "crumbs": [
+      "Continuous Integration"
+    ]
+  },
+  {
+    "objectID": "sections/1_ci.html#testing-python-code",
+    "href": "sections/1_ci.html#testing-python-code",
+    "title": "Continuous Integration",
+    "section": "Testing python code",
+    "text": "Testing python code\n\nname: build python package\n\non:\n  push:\n    branches:\n      - main\n  pull_request:\n    branches:\n      - main\n\njobs:\n  build:\n    runs-on: ubuntu-latest\n1    strategy:\n      matrix:\n2        python-version: [\"3.11\", \"3.12\"]\n\n    steps:\n      - uses: actions/checkout@v4\n      - name: Set up Python ${{ matrix.python-version }}\n        uses: actions/setup-python@v3\n3        with:\n          python-version: ${{ matrix.python-version }}\n      - name: Install dependencies\n        run: |\n          python -m pip install ./python-package[test] --upgrade pip\n      - name: Test\n        run: |\n          python -m pytest\n\n1\n\nUse a matrix strategy to run the job multiple times\n\n2\n\nThe build job will run once for Python version 3.11 and once for version 3.12\n\n3\n\nwith: allows you to define variables that are used by the action. The Python version from the matrix is passed along to the setup-python action.\n\n\nAdd this workflow and the example code in python-package to a new branch your repo. Push your branch and open a pull request (PR). The workflow will begin running for your latest commit in the PR branch.",
+    "crumbs": [
+      "Continuous Integration"
+    ]
+  },
+  {
+    "objectID": "sections/1_ci.html#when-the-workflow-run-fails",
+    "href": "sections/1_ci.html#when-the-workflow-run-fails",
+    "title": "Continuous Integration",
+    "section": "When the workflow run fails",
+    "text": "When the workflow run fails\nTake a look at the workflow status: a green checkmark means it passed and a red X means it failed. Let’s investigate the logs to find out why it failed.\nIt failed while running the tests with pytest. The output of pytest shows that one of our tests failed. Does it also fail when we run pytest locally?\npython -m pytest\nOops, we seem to have a bug in our code! Edit src/mypkg/main.py and fix the bug. Try running pytest to make sure it’s really fixed this time:\npython -m pytest\nCommit and push the changes to your branch. Notice how the workflow re-runs when you push the latest commit. Does the workflow complete successfully this time?\nYou can setup a branch protection rule1 to require that this workflow passes before Pull Requests can be merged into main. This way, you can guarantee that all contributions pass the unit tests.",
+    "crumbs": [
+      "Continuous Integration"
+    ]
+  },
+  {
+    "objectID": "sections/1_ci.html#footnotes",
+    "href": "sections/1_ci.html#footnotes",
+    "title": "Continuous Integration",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nhttps://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches↩︎",
+    "crumbs": [
+      "Continuous Integration"
+    ]
+  },
+  {
+    "objectID": "sections/3_ghapi.html",
+    "href": "sections/3_ghapi.html",
+    "title": "GitHub API",
+    "section": "",
+    "text": "The GitHub CLI1 is installed on all runners. Anything the gh CLI can do, you can do with it in GitHub Actions.\nAdding an issue comment when a label is added2\nCreate an issue in your repo and add the “help wanted” label. Go the the Actions tab and see if the workflow is running. Once it completes, go back to your issue – did it create the comment like you expected?",
+    "crumbs": [
+      "GitHub API"
+    ]
+  },
+  {
+    "objectID": "sections/3_ghapi.html#footnotes",
+    "href": "sections/3_ghapi.html#footnotes",
+    "title": "GitHub API",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nhttps://cli.github.com/manual/↩︎\nadapted from https://docs.github.com/en/actions/use-cases-and-examples/project-management/commenting-on-an-issue-when-a-label-is-added↩︎\nhttps://docs.github.com/en/actions/security-for-github-actions/security-guides/automatic-token-authentication↩︎\nhttps://docs.github.com/en/actions/security-for-github-actions/security-guides/automatic-token-authentication#permissions-for-the-github_token↩︎\nhttps://cli.github.com/manual/gh_help_environment↩︎",
+    "crumbs": [
+      "GitHub API"
+    ]
+  },
+  {
+    "objectID": "sections/4_docs.html",
+    "href": "sections/4_docs.html",
+    "title": "Rendering documents",
+    "section": "",
+    "text": "You can render documents such as Quarto and R Markdown notebooks and publish the outputs with GitHub Pages. Take a look at the example quarto document: quarto-report/notebook.qmd.\n\nname: render quarto reports\n\non:\n  workflow_dispatch:\n1  push:\n    branches: main\n    paths:\n      - \"quarto-report/**\"\n      - \".github/workflows/render-quarto.yml\"\n\n2permissions:\n  contents: write\n  pages: write\n\njobs:\n  render-quarto:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v4\n\n3      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n\n4      - uses: r-lib/actions/setup-r@v2\n      - uses: r-lib/actions/setup-r-dependencies@v2\n        with:\n          packages: |\n            any::ggplot2\n            any::palmerpenguins\n            any::rmarkdown\n\n5      - name: Run R script\n        run: |\n          print(\"Hello, world!\")\n        shell: Rscript {0}\n\n6      - name: Publish to GitHub Pages (and render)\n        uses: quarto-dev/quarto-actions/publish@v2\n        with:\n          target: gh-pages\n          path: quarto-report/\n7        env:\n          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n\n1\n\nRun this workflow on pushes to main only if files in quarto-report/ are changed or this workflow file changes.\n\n2\n\nSet the permissions to allow this workflow to write content to the repo and github pages. These permissions are disabled by default.\n\n3\n\nInstall Quarto.\n\n4\n\nInstall R and a few R packages.\n\n5\n\nYou aren’t limited to only bash in run steps. You can set shell to run other scripting languages too! Rscript {0} means the contents of run will be passed to Rscript at runtime.\n\n6\n\nRender the quarto project in quarto-report, push it to the gh-pages branch, and publish it to github pages.\n\n7\n\nPass the default GitHub Token with elevated permissions to the quarto publish action, so it will be able to write content to the repo and github pages.\n\n\nBefore you can use this workflow, we’ll need to first manually publish to GitHub Pages.\nquarto publish gh-pages quarto-report/",
+    "crumbs": [
+      "Rendering documents"
+    ]
+  },
+  {
+    "objectID": "sections/0_intro.html",
+    "href": "sections/0_intro.html",
+    "title": "Introduction",
+    "section": "",
+    "text": "GitHub Actions (GHA) is a service for continuous integration & deployment.\nBut you don’t have to consider yourself a software engineer to use it! Any repetitive task can potentially be automated with GitHub Actions. Just a few examples:",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "sections/0_intro.html#how-to-write-github-actions-workflows",
+    "href": "sections/0_intro.html#how-to-write-github-actions-workflows",
+    "title": "Introduction",
+    "section": "How to write GitHub Actions workflows",
+    "text": "How to write GitHub Actions workflows\nWorkflows are defined as YAML files in a specific directory in your repo: .github/workflows/.\nCreate this directory if you haven’t already:\nmkdir -p .github/workflows/\nCreate a YAML file:\ntouch .github/workflows/hello-world.yml\nAnd open it in your favorite text editor.",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "sections/0_intro.html#anatomy-of-a-gha-workflow",
+    "href": "sections/0_intro.html#anatomy-of-a-gha-workflow",
+    "title": "Introduction",
+    "section": "Anatomy of a GHA workflow",
+    "text": "Anatomy of a GHA workflow\n\n1name: Hello world!\n\n2on: push\n\njobs:\n3  myjob1:\n4    runs-on: ubuntu-latest\n5    steps:\n6      - run: echo \"🎉 Hello world!\"\n7      - run: |\n          echo \"The job was triggered by\"\n          echo \"a ${{ github.event_name }} event.\"\n\n1\n\nName of the workflow\n\n2\n\nTriggers: events that cause the workflow to run\n\n3\n\nName of a job. Jobs can run sequentially or in parallel.\n\n4\n\nWhich virtual machine to run the job on\n\n5\n\nList of steps in the job\n\n6\n\nA single step or action that runs bash code\n\n7\n\nA multiline step",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "sections/0_intro.html#how-to-run-your-first-workflow",
+    "href": "sections/0_intro.html#how-to-run-your-first-workflow",
+    "title": "Introduction",
+    "section": "How to run your first workflow",
+    "text": "How to run your first workflow\nCopy the above YAML code to .github/workflows/hello-world.yml and save the file.\nAdd, commit, and push your workflow file to GitHub:\ngit add .github/workflows/hello-world.yml\ngit commit -m 'ci: create hello-world workflow'\ngit push\nIn a web browser, navigate to your repo’s actions tab. On the left sidebar you’ll see the name of your action: click on it and you’ll see a list of the workflow runs (i.e. times it was executed). Click on the most recent run to see the details of the execution and the logs for each step.",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "sections/0_intro.html#actions-steps",
+    "href": "sections/0_intro.html#actions-steps",
+    "title": "Introduction",
+    "section": "Actions steps",
+    "text": "Actions steps\nWriting custom steps for your workflows is powerful, but you’re not limited to only what you can implement. You can reuse Actions created by others’, including many that are maintained by GitHub.\n\nname: hello checkout\n\non: push\n\njobs:\n  myjob1:\n    runs-on: ubuntu-latest\n    steps:\n1      - uses: actions/checkout@v4\n2      - name: List files in the repository\n3        run: |\n          ls ${{ github.workspace }}\n\n1\n\nUse the action from actions/checkout to checkout the repo. The version is specified with @v4.\n\n2\n\nName of the run step (optional).\n\n3\n\nList the files in the repo, which was checked out to the github.workspace variable.\n\n\ngithub.workspace is a variable defined by GHA1. You can access variables in workflows with a dollar sign and double curly braces: ${{ variable }}.\nThe current working directory is github.workspace by default, and this is where your repo is checked out.",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "sections/0_intro.html#triggers",
+    "href": "sections/0_intro.html#triggers",
+    "title": "Introduction",
+    "section": "Triggers",
+    "text": "Triggers\nSo far we’ve used the push trigger, which triggers the workflow to run every time a commit is pushed to the repo on GitHub. There are a myriad of triggers2 you can use, and you can mix-and-mitch in the same workflow. Here are a few of the most common triggers:\n\nname: demo triggers\n\non:\n1  push:\n    branches: [ \"main\" ]\n  pull_request:\n    branches: [ \"main\" ]\n2  workflow_dispatch:\n3  schedule:\n    - cron: '0 12 * * 1'\n\njobs:\n  myjob1:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - name: \n        run: |\n4          echo \"Event: ${{ github.event_name }}\"\n\n1\n\nTriggers the workflow on push or pull request events but only for the “main” branch.\n\n2\n\nAllows you to run this workflow manually from the Actions tab.\n\n3\n\nTriggers the workflow on a cron schedule3. This one runs at 12:00 UTC on every Monday.\n\n4\n\nPrint the event that triggered the run.\n\n\nLet’s try running this workflow manually! After you add this workflow to your repo, navigate to the Actions tab and click on the workflow name. A button will appear: run workflow. Click it and select the branch you want to run on. Refresh the page and you will see your manually triggered run in the log. What is the value in github.event for the workflow_dispatch trigger?",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "sections/0_intro.html#what-now",
+    "href": "sections/0_intro.html#what-now",
+    "title": "Introduction",
+    "section": "What now?",
+    "text": "What now?\nSo far, we’ve learned the basics of how to write Github Actions workflows. Next you’ll see some useful examples of GHA in practice and learn about more advanced features along the way.",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "sections/0_intro.html#footnotes",
+    "href": "sections/0_intro.html#footnotes",
+    "title": "Introduction",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nhttps://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/accessing-contextual-information-about-workflow-runs#about-contexts↩︎\nhttps://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows↩︎\nhttps://crontab.guru/↩︎",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "sections/2_snakemake.html",
+    "href": "sections/2_snakemake.html",
+    "title": "Snakemake example",
+    "section": "",
+    "text": "Dry-run & lint a Snakemake workflow\nTake a look at the example Snakemake workflow: snakemake-workflow/workflow/Snakefile\nBeware: github’s default runners are limited to 4 CPUs and 16 GB RAM2.",
+    "crumbs": [
+      "Snakemake example"
+    ]
+  },
+  {
+    "objectID": "sections/2_snakemake.html#footnotes",
+    "href": "sections/2_snakemake.html#footnotes",
+    "title": "Snakemake example",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nhttps://docs.github.com/en/actions/writing-workflows/choosing-where-your-workflow-runs/running-jobs-in-a-container↩︎\nhttps://docs.github.com/en/enterprise-cloud@latest/actions/using-github-hosted-runners/using-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories↩︎",
+    "crumbs": [
+      "Snakemake example"
+    ]
+  },
+  {
+    "objectID": "sections/9_conclusion.html",
+    "href": "sections/9_conclusion.html",
+    "title": "Conclusion",
+    "section": "",
+    "text": "GitHub Actions is a powerful platform for CI/CD and automating just about any task you want. Once you understand the basics, the best way to get started is by re-using workflows from others. We have a repository of example workflows & actions that we re-use often for CCBR projects. Take a look at CCBR Actions for example workflows that you can start using in your repositories right away.",
+    "crumbs": [
+      "Conclusion"
+    ]
+  },
+  {
+    "objectID": "sections/9_conclusion.html#resources",
+    "href": "sections/9_conclusion.html#resources",
+    "title": "Conclusion",
+    "section": "Resources",
+    "text": "Resources\n\nGitHub Docs https://docs.github.com/en/actions\nCCBR Actions https://github.com/ccbr/actions\nActions for R https://github.com/r-lib/actions/\nActions for Quarto https://github.com/quarto-dev/quarto-actions\nVS Code extension https://marketplace.visualstudio.com/items?itemName=github.vscode-github-actions",
+    "crumbs": [
+      "Conclusion"
+    ]
+  }
+]
