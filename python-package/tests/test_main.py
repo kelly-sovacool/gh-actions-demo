@@ -1,4 +1,4 @@
-from mypkg import multiply, add
+from mypkg.main import multiply, add
 
 def test_multiply():
     assert multiply(2, 3) == 6
