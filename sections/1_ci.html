@@ -210,6 +210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#testing-python-code" id="toc-testing-python-code" class="nav-link active" data-scroll-target="#testing-python-code">Testing python code</a></li>
   <li><a href="#when-the-workflow-run-fails" id="toc-when-the-workflow-run-fails" class="nav-link" data-scroll-target="#when-the-workflow-run-fails">When the workflow run fails</a></li>
+  <li><a href="#more-ci-workflows" id="toc-more-ci-workflows" class="nav-link" data-scroll-target="#more-ci-workflows">More CI workflows</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/kelly-sovacool/gh-actions-demo/edit/main/sections/1_ci.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kelly-sovacool/gh-actions-demo/blob/main/sections/1_ci.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/kelly-sovacool/gh-actions-demo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -282,17 +283,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span data-code-cell="annotated-cell-1" data-code-lines="22,23" data-code-annotation="3"><code>with:</code> allows you to define variables that are used by the action. The Python version from the matrix is passed along to the <code>setup-python</code> action.</span>
 </dd>
 </dl>
-<p>Add this workflow and the example code in <code>python-package</code> to a new branch your repo. Push your branch and open a pull request (PR). The workflow will begin running for your latest commit in the PR branch.</p>
+<p>Add this workflow and the example code in <a href="https://github.com/kelly-sovacool/gh-actions-sandbox/tree/main/python-package"><code>python-package</code></a> to a new branch your repo. Push your branch and open a pull request (PR). The workflow will begin running for your latest commit in the PR branch.</p>
 </section>
 <section id="when-the-workflow-run-fails" class="level2">
 <h2 class="anchored" data-anchor-id="when-the-workflow-run-fails">When the workflow run fails</h2>
-<p>Take a look at the workflow status: a green checkmark means it passed and a red X means it failed. Let’s investigate the logs to find out why it failed.</p>
-<p>It failed while running the tests with pytest. The output of pytest shows that one of our tests failed. Does it also fail when we run pytest locally?</p>
+<p>Take a look at the workflow status: a green check ✅ means it passed and a red X ❌ means it failed. Let’s investigate the logs to find out why it failed.</p>
+<p>The output of pytest shows that one of our tests failed. Does it also fail when we run pytest locally?</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pytest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Oops, we seem to have a bug in our code! Edit <code>src/mypkg/main.py</code> and fix the bug. Try running pytest to make sure it’s really fixed this time:</p>
+<p>Oops, we seem to have a bug in our code! Edit <code>python-package/src/mypkg/main.py</code> and fix the bug. Try running pytest to make sure it’s really fixed this time:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pytest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Commit and push the changes to your branch. Notice how the workflow re-runs when you push the latest commit. Does the workflow complete successfully this time?</p>
 <p>You can setup a branch protection rule<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> to require that this workflow passes before Pull Requests can be merged into <code>main</code>. This way, you can guarantee that all contributions pass the unit tests.</p>
+</section>
+<section id="more-ci-workflows" class="level2">
+<h2 class="anchored" data-anchor-id="more-ci-workflows">More CI workflows</h2>
+<p>Take a look at these full-featured examples for testing Python and R packages:</p>
+<ul>
+<li><a href="https://github.com/CCBR/actions/blob/main/examples/build-python.yml">Python</a> (CCBR)</li>
+<li><a href="https://github.com/r-lib/actions/blob/v2-branch/examples/check-standard.yaml">R</a> (r-lib)</li>
+</ul>
 
 
 </section>

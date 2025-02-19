@@ -203,8 +203,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#more-workflows-for-bioinformatics-pipelines" id="toc-more-workflows-for-bioinformatics-pipelines" class="nav-link active" data-scroll-target="#more-workflows-for-bioinformatics-pipelines">More workflows for bioinformatics pipelines</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/kelly-sovacool/gh-actions-demo/edit/main/sections/2_snakemake.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kelly-sovacool/gh-actions-demo/blob/main/sections/2_snakemake.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/kelly-sovacool/gh-actions-demo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -228,8 +234,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Dry-run &amp; lint a Snakemake workflow</p>
-<p>Take a look at the example Snakemake workflow: <code>snakemake-workflow/workflow/Snakefile</code></p>
+<p>You can run bioinformatics pipelines in GitHub Actions. You can write unit tests like you would for regular software. While testing is strongly encouraged for re-usable pipelines in particular, sometimes unit testing is not a high priority, such as for one-off analysis projects. A more basic check you can do is make sure your pipeline has correct syntax. For Snakemake, you can dry-run and lint the Snakemake workflow to ensure it passes minimal quality standards.</p>
+<p>Take a look at the example Snakemake workflow: <a href="https://github.com/kelly-sovacool/gh-actions-sandbox/blob/main/snakemake-workflow/workflow/Snakefile"><code>snakemake-workflow/workflow/Snakefile</code></a></p>
+<p>We’ll use GitHub Actions workflow to check that our Snakemake workflow can complete a dry-run and that it passes Snakemake’s linting checks.</p>
 <p><a href="https://github.com/kelly-sovacool/gh-actions-sandbox/tree/main/.github/workflows/build-python.yml"><i class="fa-brands fa-github" aria-label="github"></i></a></p>
 <div class="sourceCode" id="annotated-cell-1"><pre class="sourceCode yaml code-annotation-code code-with-copy code-annotated"><code class="sourceCode yaml"><span id="annotated-cell-1-1"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> snakemake</span></span>
 <span id="annotated-cell-1-2"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -271,9 +278,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span data-code-cell="annotated-cell-1" data-code-lines="22,23,24,25,26" data-code-annotation="3">Lint the workflow with Snakemake’s built-in linter to ensure code quality.</span>
 </dd>
 </dl>
-<p>Beware: github’s default runners are limited to 4 CPUs and 16 GB RAM<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<div class="callout callout-style-default callout-caution callout-titled" title="Resource limits">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Resource limits
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>GitHub’s default runners are limited to 4 CPUs and 16 GB RAM<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+</div>
+</div>
+<p>Add this new GHA workflow to your repo and see what happens. Do both the dry-run and lint steps complete successfully? Do any changes need to be made to the Snakemake workflow make these steps pass?</p>
+<section id="more-workflows-for-bioinformatics-pipelines" class="level2">
+<h2 class="anchored" data-anchor-id="more-workflows-for-bioinformatics-pipelines">More workflows for bioinformatics pipelines</h2>
+<ul>
+<li><a href="https://github.com/CCBR/actions/blob/main/examples/build-snakemake.yml">Snakemake</a> (CCBR)</li>
+<li><a href="https://github.com/CCBR/actions/blob/main/examples/build-nextflow.yml">Nextflow</a> (CCBR)</li>
+<li><a href="https://github.com/nf-core/rnaseq/blob/master/.github/workflows/ci.yml">Nextflow</a> (nf-core)</li>
+</ul>
 
 
+</section>
 
 
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
@@ -861,4 +889,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/kelly-sovacool/gh-actions-demo/edit/main/sections/2_snakemake.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kelly-sovacool/gh-actions-demo/blob/main/sections/2_snakemake.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/kelly-sovacool/gh-actions-demo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/kelly-sovacool/gh-actions-demo/edit/main/sections/2_snakemake.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kelly-sovacool/gh-actions-demo/blob/main/sections/2_snakemake.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/kelly-sovacool/gh-actions-demo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

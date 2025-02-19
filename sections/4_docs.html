@@ -203,8 +203,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#more-workflows-for-rendering-documents" id="toc-more-workflows-for-rendering-documents" class="nav-link active" data-scroll-target="#more-workflows-for-rendering-documents">More workflows for rendering documents</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/kelly-sovacool/gh-actions-demo/edit/main/sections/4_docs.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kelly-sovacool/gh-actions-demo/blob/main/sections/4_docs.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/kelly-sovacool/gh-actions-demo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -228,7 +234,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>You can render documents such as Quarto and R Markdown notebooks and publish the outputs with GitHub Pages. Analysis notebooks, scheduled reports from external databases, and documentation websites for software can all be published automatically with GHA &amp; Pages. Take a look at the example quarto document: <code>quarto-report/notebook.qmd</code>.</p>
+<p>You can render documents such as Quarto and R Markdown notebooks and publish the outputs with GitHub Pages. Analysis notebooks, scheduled reports with data crunched from external databases, and documentation websites for software can all be published automatically with GHA &amp; Pages.</p>
+<p>Take a look at the example quarto document: <a href="https://github.com/kelly-sovacool/gh-actions-sandbox/blob/main/quarto-report/notebook.qmd"><code>quarto-report/notebook.qmd</code></a>. Let’s write a workflow to render this document and publish it to the web:</p>
 <p><a href="https://github.com/kelly-sovacool/gh-actions-sandbox/tree/main/.github/workflows/render-quarto.yml"><i class="fa-brands fa-github" aria-label="github"></i></a></p>
 <div class="sourceCode" id="annotated-cell-1"><pre class="sourceCode yaml code-annotation-code code-with-copy code-annotated"><code class="sourceCode yaml"><span id="annotated-cell-1-1"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> render quarto reports</span></span>
 <span id="annotated-cell-1-2"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -307,8 +314,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Before you can use this workflow, we’ll need to first manually publish to GitHub Pages.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> publish gh-pages quarto-report/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The rendered report will be available at <code>https://USERNAME.github.io/REPO</code>. After the initial publish, your GHA workflow will keep your website up to date.</p>
+<section id="more-workflows-for-rendering-documents" class="level2">
+<h2 class="anchored" data-anchor-id="more-workflows-for-rendering-documents">More workflows for rendering documents</h2>
+<ul>
+<li><a href="https://github.com/quarto-dev/quarto-actions/tree/main/examples">quarto examples</a> (Quarto)</li>
+<li><a href="https://github.com/CCBR/actions/blob/main/examples/docs-quarto.yml">quarto docs</a> (CCBR)</li>
+<li><a href="https://github.com/CCBR/actions/blob/main/examples/docs-mkdocs.yml">mkdocs</a> (CCBR)</li>
+<li><a href="https://github.com/r-lib/actions/blob/v2-branch/examples/render-rmarkdown.yaml">R Markdown</a></li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -889,4 +905,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/kelly-sovacool/gh-actions-demo/edit/main/sections/4_docs.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kelly-sovacool/gh-actions-demo/blob/main/sections/4_docs.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/kelly-sovacool/gh-actions-demo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/kelly-sovacool/gh-actions-demo/edit/main/sections/4_docs.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kelly-sovacool/gh-actions-demo/blob/main/sections/4_docs.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/kelly-sovacool/gh-actions-demo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
