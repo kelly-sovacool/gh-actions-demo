@@ -50,4 +50,4 @@ Go the the Actions tab and see if the workflow is running.
 Once it completes, go back to your issue -- did it create the comment like you expected?
 
 Peruse the [GitHub CLI manual](https://cli.github.com/manual/). 
-What other processes could you automate for managining issues, PRs, and projects?
+What other processes could you automate for managing issues, PRs, and projects?
