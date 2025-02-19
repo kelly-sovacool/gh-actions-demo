@@ -1,0 +1,8 @@
+
+rule echo:
+    output:
+        "output.txt"
+    shell:
+        """
+        echo "Hello, world!" > {output}
+        """

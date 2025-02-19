@@ -1,0 +1,30 @@
+name: snakemake
+
+on:
+  push:
+    branches:
+      - master
+      - main
+      - develop
+  pull_request:
+
+jobs:
+  dryrun-lint:
+    runs-on: ubuntu-latest
+    container:
+      image: snakemake/snakemake:v7.32.4
+    steps:
+      - uses: actions/checkout@v4
+      #- uses: docker://snakemake/snakemake:v7.32.4
+      - name: Dry-run
+        run: |
+          snakemake \
+            -s ./snakemake-workflow/workflow/Snakefile \
+            --dry-run
+      - name: Lint
+        continue-on-error: true
+        run: |
+          snakemake \
+            -s ./snakemake-workflow/workflow/Snakefile \
+            --lint
+ 
