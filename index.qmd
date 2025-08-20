@@ -27,3 +27,10 @@ fork [the sandbox repo](https://github.com/kelly-sovacool/gh-actions-sandbox/for
 and [clone it](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
 During the demo you'll create files, push changes to your GitHub repo,
 and see how GitHub Actions works by example.
+
+## Video
+
+This demo was created and presented for the 
+[Bioinformatics Training and Education Program (NIH/NCI/CCR)](https://bioinformatics.ccr.cancer.gov/btep/classes/). 
+The recorded video is available
+[here](https://cbiit.webex.com/cbiit/ldr.php?RCID=3c728d9bd6f2efc3ecad6b72a807a7c2).
