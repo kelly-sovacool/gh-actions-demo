@@ -1,0 +1,13 @@
+---
+title: Intro to GitHub Actions for Analysts & Engineers
+format:
+  revealjs:
+    theme:
+      - _extensions/fnl/fnl-light-revealjs.scss
+title-slide-attributes: 
+  data-background-image: img/github-mark.png
+  data-background-size: "45%"
+  data-background-opacity: "0.5"
+  data-background-color: "#19424e"
+
+---
