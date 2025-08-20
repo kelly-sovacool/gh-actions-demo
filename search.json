@@ -1,35 +1,52 @@
 [
   {
-    "objectID": "sections/snakemake.html",
-    "href": "sections/snakemake.html",
-    "title": "Snakemake example",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome",
     "section": "",
-    "text": "You can write and run unit tests for bioinformatics pipelines just like you would for regular software. While testing is strongly encouraged for re-usable pipelines in particular, sometimes unit testing is not a high priority, such as for one-off analysis projects. A more basic check you can do is make sure your pipeline has correct syntax. For Snakemake, you can dry-run and lint the Snakemake workflow to ensure it passes minimal quality standards.\nTake a look at the example Snakemake workflow:\nWe’ll use a GitHub Actions workflow to check that our Snakemake workflow can complete a dry-run and that it passes Snakemake’s linting checks.\nAdd this new GHA workflow to your repo and see what happens. Do both the dry-run and lint steps complete successfully? Do any changes need to be made to the Snakemake workflow make these steps pass?\nThe dry run succeeded, but the lint step failed because we didn’t define a log file for the rule in the Snakefile. Let’s modify it:\nAdd, commit, and push this change to your repo. Now the lint step passes and tells you that the Snakemake workflow is in good condition:",
+    "text": "GitHub is a version control platform for tracking, sharing, and collaborating on software projects of all kinds. One of GitHub’s most powerful features is GitHub Actions, an automation platform that executes lightweight workflows for continuous integration & deployment. In this demonstration, we’ll show you the basics of creating GitHub Actions workflows and walk through examples to help you get started using GitHub Actions in your own repositories. Whether you are a software engineer or an analyst, GitHub Actions can help you automate repetitive tasks like formatting code, running tests, publishing reports, and so much more!",
     "crumbs": [
-      "Learn by example",
-      "Snakemake example"
+      "Welcome"
     ]
   },
   {
-    "objectID": "sections/snakemake.html#more-workflows-for-bioinformatics-pipelines",
-    "href": "sections/snakemake.html#more-workflows-for-bioinformatics-pipelines",
-    "title": "Snakemake example",
-    "section": "More workflows for bioinformatics pipelines",
-    "text": "More workflows for bioinformatics pipelines\n\nSnakemake (CCBR) https://github.com/CCBR/actions/blob/main/examples/build-snakemake.yml\nNextflow (CCBR) https://github.com/CCBR/actions/blob/main/examples/build-nextflow.yml\nNextflow (nf-core) https://github.com/nf-core/rnaseq/blob/master/.github/workflows/ci.yml",
+    "objectID": "index.html#audience",
+    "href": "index.html#audience",
+    "title": "Welcome",
+    "section": "Audience",
+    "text": "Audience\nThis demo assumes you:\n\nwrite code, whether for analysis projects or for software development\nare already familiar with git1 and GitHub2",
     "crumbs": [
-      "Learn by example",
-      "Snakemake example"
+      "Welcome"
     ]
   },
   {
-    "objectID": "sections/snakemake.html#footnotes",
-    "href": "sections/snakemake.html#footnotes",
-    "title": "Snakemake example",
+    "objectID": "index.html#code-along",
+    "href": "index.html#code-along",
+    "title": "Welcome",
+    "section": "Code along",
+    "text": "Code along\nIf you’d like to code along with this demo, fork the sandbox repo and clone it. During the demo you’ll create files, push changes to your GitHub repo, and see how GitHub Actions works by example.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#video",
+    "href": "index.html#video",
+    "title": "Welcome",
+    "section": "Video",
+    "text": "Video\nThis demo was created and presented for the Bioinformatics Training and Education Program (NIH/NCI/CCR). The recorded video is available here.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#footnotes",
+    "href": "index.html#footnotes",
+    "title": "Welcome",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nRunning jobs in a container: https://docs.github.com/en/actions/writing-workflows/choosing-where-your-workflow-runs/running-jobs-in-a-container↩︎\nResources for standard GitHub runners: https://docs.github.com/en/enterprise-cloud@latest/actions/using-github-hosted-runners/using-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories↩︎",
+    "text": "Footnotes\n\n\nVersion control with Git https://bioinformatics.ccr.cancer.gov/btep/classes/version-control-with-git↩︎\nVersion control using GitHub https://bioinformatics.ccr.cancer.gov/btep/classes/version-control-using-github-and-git↩︎",
     "crumbs": [
-      "Learn by example",
-      "Snakemake example"
+      "Welcome"
     ]
   },
   {
@@ -66,128 +83,25 @@
     ]
   },
   {
-    "objectID": "sections/ci.html",
-    "href": "sections/ci.html",
-    "title": "Continuous Integration",
+    "objectID": "sections/ghapi.html",
+    "href": "sections/ghapi.html",
+    "title": "GitHub API",
     "section": "",
-    "text": "Unit testing is one of the most useful practices you can incorporate to improve your code’s quality. Testing is so important that it is best to automate the process so your tests run every time changes are made. This way, if something breaks, you can identify exactly when the code stopped working and get to the bottom of it more easily.",
+    "text": "The GitHub CLI1 (gh) is a command-line interface to GitHub right from your terminal. Anything the gh CLI can do, you can do with it in GitHub Actions – it is pre-installed on all runners.\nLet’s try automatically adding an issue comment when a label is added to the issue.2\nCreate an issue in your repo and add the “help wanted” label. Go the the Actions tab and see if the workflow is running. Once it completes, go back to your issue – did it create the comment like you expected?\nPeruse the GitHub CLI manual. What other processes could you automate for managing issues, PRs, and projects?",
     "crumbs": [
       "Learn by example",
-      "Continuous Integration"
+      "GitHub API"
     ]
   },
   {
-    "objectID": "sections/ci.html#testing-python-code",
-    "href": "sections/ci.html#testing-python-code",
-    "title": "Continuous Integration",
-    "section": "Testing python code",
-    "text": "Testing python code\n\n\n\n.github/workflows/build-python.yml\n\nname: build python package\n\non:\n  push:\n    branches:\n      - main\n  pull_request:\n    branches:\n      - main\n\njobs:\n  build:\n    runs-on: ubuntu-latest\n1    strategy:\n      matrix:\n2        python-version: [\"3.11\", \"3.12\"]\n\n    steps:\n      - uses: actions/checkout@v4\n      - name: Set up Python ${{ matrix.python-version }}\n        uses: actions/setup-python@v3\n3        with:\n          python-version: ${{ matrix.python-version }}\n      - name: Install dependencies\n        run: |\n          python -m pip install ./python-package[test] --upgrade pip\n      - name: Test\n        run: |\n          python -m pytest\n\n\n1\n\nUse a matrix strategy to run the job multiple times\n\n2\n\nThe build job will run once for Python version 3.11 and once for version 3.12\n\n3\n\nwith: allows you to define variables that are used by the action. The Python version from the matrix is passed along to the setup-python action.\n\n\nAdd this workflow and the example code in python-package to a new branch in your repo. Push your branch and open a pull request (PR). The workflow will begin running for your latest commit in the PR branch.",
-    "crumbs": [
-      "Learn by example",
-      "Continuous Integration"
-    ]
-  },
-  {
-    "objectID": "sections/ci.html#when-the-workflow-run-fails",
-    "href": "sections/ci.html#when-the-workflow-run-fails",
-    "title": "Continuous Integration",
-    "section": "When the workflow run fails",
-    "text": "When the workflow run fails\n\n\n\nlog for “build python package”\n\n\nTake a look at the workflow status: a green check ✅ means it passed and a red X ❌ means it failed. Let’s investigate the logs to find out why it failed. Click on one of the build jobs and take a look at the pytest step.\n\n\n\nlog for the failing build job\n\n\nThe output of pytest shows that one of our tests failed. Does it also fail when we run pytest locally?\n# first install the local version of the package\npip install -e ./python-package\n# then try running pytest\npython -m pytest\n============================= test session starts ==============================\nplatform darwin -- Python 3.11.9, pytest-8.3.2, pluggy-1.5.0\nrootdir: /Users/sovacoolkl/projects/CCBR/gh-actions-sandbox\nplugins: cov-5.0.0, anyio-4.4.0\ncollected 2 items\n\npython-package/tests/test_main.py .F                                     [100%]\n\n=================================== FAILURES ===================================\n___________________________________ test_add ___________________________________\n\n    def test_add():\n&gt;       assert add(2, 3) == 5\nE       assert -1 == 5\nE        +  where -1 = add(2, 3)\n\npython-package/tests/test_main.py:7: AssertionError\n=========================== short test summary info ============================\nFAILED python-package/tests/test_main.py::test_add - assert -1 == 5\n========================= 1 failed, 1 passed in 0.03s ==========================\nOops, we seem to have a bug in our code! Edit python-package/src/mypkg/main.py and fix the bug.\n\n\n\n\n\n\nHint\n\n\n\nThere’s something wrong with the add() function.\n\n\nAfter you fix the bug and save the source file, try running pytest to make sure it’s really fixed this time:\npython -m pytest\n============================= test session starts ==============================\nplatform darwin -- Python 3.11.9, pytest-8.3.2, pluggy-1.5.0\nrootdir: /Users/sovacoolkl/projects/CCBR/gh-actions-sandbox\nplugins: cov-5.0.0, anyio-4.4.0\ncollected 2 items\n\npython-package/tests/test_main.py ..                                     [100%]\n\n============================== 2 passed in 0.02s ===============================\nGreat, all the tests passed! Now we can commit and push the fix to your branch. Notice how the workflow re-runs when you push the latest commit. Does the workflow complete successfully this time?\nYou can setup a branch protection rule1 to require that this workflow passes before Pull Requests can be merged into your default branch. This way, you can guarantee that all contributions pass the unit tests.",
-    "crumbs": [
-      "Learn by example",
-      "Continuous Integration"
-    ]
-  },
-  {
-    "objectID": "sections/ci.html#more-ci-workflows",
-    "href": "sections/ci.html#more-ci-workflows",
-    "title": "Continuous Integration",
-    "section": "More CI workflows",
-    "text": "More CI workflows\nTake a look at these full-featured examples for testing Python and R packages:\n\nPython (CCBR): https://github.com/CCBR/actions/blob/main/examples/build-python.yml\nR (r-lib): https://github.com/r-lib/actions/blob/v2-branch/examples/check-standard.yaml",
-    "crumbs": [
-      "Learn by example",
-      "Continuous Integration"
-    ]
-  },
-  {
-    "objectID": "sections/ci.html#footnotes",
-    "href": "sections/ci.html#footnotes",
-    "title": "Continuous Integration",
+    "objectID": "sections/ghapi.html#footnotes",
+    "href": "sections/ghapi.html#footnotes",
+    "title": "GitHub API",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nAbout branch protection: https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches↩︎",
+    "text": "Footnotes\n\n\nGitHub CLI manual https://cli.github.com/manual/↩︎\nThis action was adapted from https://docs.github.com/en/actions/use-cases-and-examples/project-management/commenting-on-an-issue-when-a-label-is-added↩︎\nGITHUB_TOKEN https://docs.github.com/en/actions/security-for-github-actions/security-guides/automatic-token-authentication↩︎\nDefault permissions for GITHUB_TOKEN https://docs.github.com/en/actions/security-for-github-actions/security-guides/automatic-token-authentication#permissions-for-the-github_token↩︎\nEnvironment variables needed by gh cli https://cli.github.com/manual/gh_help_environment↩︎",
     "crumbs": [
       "Learn by example",
-      "Continuous Integration"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Welcome",
-    "section": "",
-    "text": "GitHub is a version control platform for tracking, sharing, and collaborating on software projects of all kinds. One of GitHub’s most powerful features is GitHub Actions, an automation platform that executes lightweight workflows for continuous integration & deployment. In this demonstration, we’ll show you the basics of creating GitHub Actions workflows and walk through examples to help you get started using GitHub Actions in your own repositories. Whether you are a software engineer or an analyst, GitHub Actions can help you automate repetitive tasks like formatting code, running tests, publishing reports, and so much more!",
-    "crumbs": [
-      "Welcome"
-    ]
-  },
-  {
-    "objectID": "index.html#audience",
-    "href": "index.html#audience",
-    "title": "Welcome",
-    "section": "Audience",
-    "text": "Audience\nThis demo assumes you:\n\nwrite code, whether for analysis projects or for software development\nare already familiar with git1 and GitHub2",
-    "crumbs": [
-      "Welcome"
-    ]
-  },
-  {
-    "objectID": "index.html#code-along",
-    "href": "index.html#code-along",
-    "title": "Welcome",
-    "section": "Code along",
-    "text": "Code along\nIf you’d like to code along with this demo, fork the sandbox repo and clone it. During the demo you’ll create files, push changes to your GitHub repo, and see how GitHub Actions works by example.",
-    "crumbs": [
-      "Welcome"
-    ]
-  },
-  {
-    "objectID": "index.html#footnotes",
-    "href": "index.html#footnotes",
-    "title": "Welcome",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nVersion control with Git https://bioinformatics.ccr.cancer.gov/btep/classes/version-control-with-git↩︎\nVersion control using GitHub https://bioinformatics.ccr.cancer.gov/btep/classes/version-control-using-github-and-git↩︎",
-    "crumbs": [
-      "Welcome"
-    ]
-  },
-  {
-    "objectID": "sections/conclusion.html",
-    "href": "sections/conclusion.html",
-    "title": "Conclusion",
-    "section": "",
-    "text": "GitHub Actions is a powerful platform for CI/CD and automating just about any task you want. Once you understand the basics, the best way to get started is by re-using workflows from others. We have a repository of example workflows & actions that we re-use often for CCBR projects. Take a look at CCBR Actions for example workflows that you can start using in your repositories right away.",
-    "crumbs": [
-      "Conclusion"
-    ]
-  },
-  {
-    "objectID": "sections/conclusion.html#resources",
-    "href": "sections/conclusion.html#resources",
-    "title": "Conclusion",
-    "section": "Resources",
-    "text": "Resources\n\nGitHub Docs https://docs.github.com/en/actions\nCCBR Actions https://github.com/ccbr/actions\nActions for R https://github.com/r-lib/actions/\nActions for Quarto https://github.com/quarto-dev/quarto-actions\nVS Code extension https://marketplace.visualstudio.com/items?itemName=github.vscode-github-actions",
-    "crumbs": [
-      "Conclusion"
-    ]
-  },
-  {
-    "objectID": "sections/conclusion.html#usage-limits",
-    "href": "sections/conclusion.html#usage-limits",
-    "title": "Conclusion",
-    "section": "Usage limits",
-    "text": "Usage limits\nThere are usage limits depending on your GitHub plan. Generally, if you are a free user and your repo is public, you can use GHA for free up to a certain limit. Pro, Team, and Enterprise accounts have higher spending limits, especially for private repos. Take a look at GitHub’s documentation for the most up-to-date and accurate information on usage limits for GitHub Actions: https://docs.github.com/en/actions/administering-github-actions/usage-limits-billing-and-administration#about-billing-for-github-actions",
-    "crumbs": [
-      "Conclusion"
+      "GitHub API"
     ]
   },
   {
@@ -271,25 +185,121 @@
     ]
   },
   {
-    "objectID": "sections/ghapi.html",
-    "href": "sections/ghapi.html",
-    "title": "GitHub API",
+    "objectID": "sections/snakemake.html",
+    "href": "sections/snakemake.html",
+    "title": "Snakemake example",
     "section": "",
-    "text": "The GitHub CLI1 (gh) is a command-line interface to GitHub right from your terminal. Anything the gh CLI can do, you can do with it in GitHub Actions – it is pre-installed on all runners.\nLet’s try automatically adding an issue comment when a label is added to the issue.2\nCreate an issue in your repo and add the “help wanted” label. Go the the Actions tab and see if the workflow is running. Once it completes, go back to your issue – did it create the comment like you expected?\nPeruse the GitHub CLI manual. What other processes could you automate for managing issues, PRs, and projects?",
+    "text": "You can write and run unit tests for bioinformatics pipelines just like you would for regular software. While testing is strongly encouraged for re-usable pipelines in particular, sometimes unit testing is not a high priority, such as for one-off analysis projects. A more basic check you can do is make sure your pipeline has correct syntax. For Snakemake, you can dry-run and lint the Snakemake workflow to ensure it passes minimal quality standards.\nTake a look at the example Snakemake workflow:\nWe’ll use a GitHub Actions workflow to check that our Snakemake workflow can complete a dry-run and that it passes Snakemake’s linting checks.\nAdd this new GHA workflow to your repo and see what happens. Do both the dry-run and lint steps complete successfully? Do any changes need to be made to the Snakemake workflow make these steps pass?\nThe dry run succeeded, but the lint step failed because we didn’t define a log file for the rule in the Snakefile. Let’s modify it:\nAdd, commit, and push this change to your repo. Now the lint step passes and tells you that the Snakemake workflow is in good condition:",
     "crumbs": [
       "Learn by example",
-      "GitHub API"
+      "Snakemake example"
     ]
   },
   {
-    "objectID": "sections/ghapi.html#footnotes",
-    "href": "sections/ghapi.html#footnotes",
-    "title": "GitHub API",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nGitHub CLI manual https://cli.github.com/manual/↩︎\nThis action was adapted from https://docs.github.com/en/actions/use-cases-and-examples/project-management/commenting-on-an-issue-when-a-label-is-added↩︎\nGITHUB_TOKEN https://docs.github.com/en/actions/security-for-github-actions/security-guides/automatic-token-authentication↩︎\nDefault permissions for GITHUB_TOKEN https://docs.github.com/en/actions/security-for-github-actions/security-guides/automatic-token-authentication#permissions-for-the-github_token↩︎\nEnvironment variables needed by gh cli https://cli.github.com/manual/gh_help_environment↩︎",
+    "objectID": "sections/snakemake.html#more-workflows-for-bioinformatics-pipelines",
+    "href": "sections/snakemake.html#more-workflows-for-bioinformatics-pipelines",
+    "title": "Snakemake example",
+    "section": "More workflows for bioinformatics pipelines",
+    "text": "More workflows for bioinformatics pipelines\n\nSnakemake (CCBR) https://github.com/CCBR/actions/blob/main/examples/build-snakemake.yml\nNextflow (CCBR) https://github.com/CCBR/actions/blob/main/examples/build-nextflow.yml\nNextflow (nf-core) https://github.com/nf-core/rnaseq/blob/master/.github/workflows/ci.yml",
     "crumbs": [
       "Learn by example",
-      "GitHub API"
+      "Snakemake example"
+    ]
+  },
+  {
+    "objectID": "sections/snakemake.html#footnotes",
+    "href": "sections/snakemake.html#footnotes",
+    "title": "Snakemake example",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nRunning jobs in a container: https://docs.github.com/en/actions/writing-workflows/choosing-where-your-workflow-runs/running-jobs-in-a-container↩︎\nResources for standard GitHub runners: https://docs.github.com/en/enterprise-cloud@latest/actions/using-github-hosted-runners/using-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories↩︎",
+    "crumbs": [
+      "Learn by example",
+      "Snakemake example"
+    ]
+  },
+  {
+    "objectID": "sections/ci.html",
+    "href": "sections/ci.html",
+    "title": "Continuous Integration",
+    "section": "",
+    "text": "Unit testing is one of the most useful practices you can incorporate to improve your code’s quality. Testing is so important that it is best to automate the process so your tests run every time changes are made. This way, if something breaks, you can identify exactly when the code stopped working and get to the bottom of it more easily.",
+    "crumbs": [
+      "Learn by example",
+      "Continuous Integration"
+    ]
+  },
+  {
+    "objectID": "sections/ci.html#testing-python-code",
+    "href": "sections/ci.html#testing-python-code",
+    "title": "Continuous Integration",
+    "section": "Testing python code",
+    "text": "Testing python code\n\n\n\n.github/workflows/build-python.yml\n\nname: build python package\n\non:\n  push:\n    branches:\n      - main\n  pull_request:\n    branches:\n      - main\n\njobs:\n  build:\n    runs-on: ubuntu-latest\n1    strategy:\n      matrix:\n2        python-version: [\"3.11\", \"3.12\"]\n\n    steps:\n      - uses: actions/checkout@v4\n      - name: Set up Python ${{ matrix.python-version }}\n        uses: actions/setup-python@v3\n3        with:\n          python-version: ${{ matrix.python-version }}\n      - name: Install dependencies\n        run: |\n          python -m pip install ./python-package[test] --upgrade pip\n      - name: Test\n        run: |\n          python -m pytest\n\n\n1\n\nUse a matrix strategy to run the job multiple times\n\n2\n\nThe build job will run once for Python version 3.11 and once for version 3.12\n\n3\n\nwith: allows you to define variables that are used by the action. The Python version from the matrix is passed along to the setup-python action.\n\n\nAdd this workflow and the example code in python-package to a new branch in your repo. Push your branch and open a pull request (PR). The workflow will begin running for your latest commit in the PR branch.",
+    "crumbs": [
+      "Learn by example",
+      "Continuous Integration"
+    ]
+  },
+  {
+    "objectID": "sections/ci.html#when-the-workflow-run-fails",
+    "href": "sections/ci.html#when-the-workflow-run-fails",
+    "title": "Continuous Integration",
+    "section": "When the workflow run fails",
+    "text": "When the workflow run fails\n\n\n\nlog for “build python package”\n\n\nTake a look at the workflow status: a green check ✅ means it passed and a red X ❌ means it failed. Let’s investigate the logs to find out why it failed. Click on one of the build jobs and take a look at the pytest step.\n\n\n\nlog for the failing build job\n\n\nThe output of pytest shows that one of our tests failed. Does it also fail when we run pytest locally?\n# first install the local version of the package\npip install -e ./python-package\n# then try running pytest\npython -m pytest\n============================= test session starts ==============================\nplatform darwin -- Python 3.11.9, pytest-8.3.2, pluggy-1.5.0\nrootdir: /Users/sovacoolkl/projects/CCBR/gh-actions-sandbox\nplugins: cov-5.0.0, anyio-4.4.0\ncollected 2 items\n\npython-package/tests/test_main.py .F                                     [100%]\n\n=================================== FAILURES ===================================\n___________________________________ test_add ___________________________________\n\n    def test_add():\n&gt;       assert add(2, 3) == 5\nE       assert -1 == 5\nE        +  where -1 = add(2, 3)\n\npython-package/tests/test_main.py:7: AssertionError\n=========================== short test summary info ============================\nFAILED python-package/tests/test_main.py::test_add - assert -1 == 5\n========================= 1 failed, 1 passed in 0.03s ==========================\nOops, we seem to have a bug in our code! Edit python-package/src/mypkg/main.py and fix the bug.\n\n\n\n\n\n\nHint\n\n\n\nThere’s something wrong with the add() function.\n\n\nAfter you fix the bug and save the source file, try running pytest to make sure it’s really fixed this time:\npython -m pytest\n============================= test session starts ==============================\nplatform darwin -- Python 3.11.9, pytest-8.3.2, pluggy-1.5.0\nrootdir: /Users/sovacoolkl/projects/CCBR/gh-actions-sandbox\nplugins: cov-5.0.0, anyio-4.4.0\ncollected 2 items\n\npython-package/tests/test_main.py ..                                     [100%]\n\n============================== 2 passed in 0.02s ===============================\nGreat, all the tests passed! Now we can commit and push the fix to your branch. Notice how the workflow re-runs when you push the latest commit. Does the workflow complete successfully this time?\nYou can setup a branch protection rule1 to require that this workflow passes before Pull Requests can be merged into your default branch. This way, you can guarantee that all contributions pass the unit tests.",
+    "crumbs": [
+      "Learn by example",
+      "Continuous Integration"
+    ]
+  },
+  {
+    "objectID": "sections/ci.html#more-ci-workflows",
+    "href": "sections/ci.html#more-ci-workflows",
+    "title": "Continuous Integration",
+    "section": "More CI workflows",
+    "text": "More CI workflows\nTake a look at these full-featured examples for testing Python and R packages:\n\nPython (CCBR): https://github.com/CCBR/actions/blob/main/examples/build-python.yml\nR (r-lib): https://github.com/r-lib/actions/blob/v2-branch/examples/check-standard.yaml",
+    "crumbs": [
+      "Learn by example",
+      "Continuous Integration"
+    ]
+  },
+  {
+    "objectID": "sections/ci.html#footnotes",
+    "href": "sections/ci.html#footnotes",
+    "title": "Continuous Integration",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nAbout branch protection: https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches↩︎",
+    "crumbs": [
+      "Learn by example",
+      "Continuous Integration"
+    ]
+  },
+  {
+    "objectID": "sections/conclusion.html",
+    "href": "sections/conclusion.html",
+    "title": "Conclusion",
+    "section": "",
+    "text": "GitHub Actions is a powerful platform for CI/CD and automating just about any task you want. Once you understand the basics, the best way to get started is by re-using workflows from others. We have a repository of example workflows & actions that we re-use often for CCBR projects. Take a look at CCBR Actions for example workflows that you can start using in your repositories right away.",
+    "crumbs": [
+      "Conclusion"
+    ]
+  },
+  {
+    "objectID": "sections/conclusion.html#resources",
+    "href": "sections/conclusion.html#resources",
+    "title": "Conclusion",
+    "section": "Resources",
+    "text": "Resources\n\nGitHub Docs https://docs.github.com/en/actions\nCCBR Actions https://github.com/ccbr/actions\nActions for R https://github.com/r-lib/actions/\nActions for Quarto https://github.com/quarto-dev/quarto-actions\nVS Code extension https://marketplace.visualstudio.com/items?itemName=github.vscode-github-actions",
+    "crumbs": [
+      "Conclusion"
+    ]
+  },
+  {
+    "objectID": "sections/conclusion.html#usage-limits",
+    "href": "sections/conclusion.html#usage-limits",
+    "title": "Conclusion",
+    "section": "Usage limits",
+    "text": "Usage limits\nThere are usage limits depending on your GitHub plan. Generally, if you are a free user and your repo is public, you can use GHA for free up to a certain limit. Pro, Team, and Enterprise accounts have higher spending limits, especially for private repos. Take a look at GitHub’s documentation for the most up-to-date and accurate information on usage limits for GitHub Actions: https://docs.github.com/en/actions/administering-github-actions/usage-limits-billing-and-administration#about-billing-for-github-actions",
+    "crumbs": [
+      "Conclusion"
     ]
   }
 ]

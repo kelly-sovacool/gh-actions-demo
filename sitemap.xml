@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://kelly-sovacool.github.io/gh-actions-demo/sections/snakemake.html</loc>
-    <lastmod>2025-02-19T22:05:03.158Z</lastmod>
+    <loc>https://kelly-sovacool.github.io/gh-actions-demo/index.html</loc>
+    <lastmod>2025-08-20T16:51:50.570Z</lastmod>
   </url>
   <url>
     <loc>https://kelly-sovacool.github.io/gh-actions-demo/sections/docs.html</loc>
-    <lastmod>2025-02-19T22:05:03.158Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kelly-sovacool.github.io/gh-actions-demo/sections/ci.html</loc>
-    <lastmod>2025-02-19T22:05:03.158Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kelly-sovacool.github.io/gh-actions-demo/index.html</loc>
-    <lastmod>2025-02-19T22:05:03.158Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kelly-sovacool.github.io/gh-actions-demo/sections/conclusion.html</loc>
-    <lastmod>2025-02-19T22:05:03.158Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kelly-sovacool.github.io/gh-actions-demo/sections/intro.html</loc>
-    <lastmod>2025-02-19T22:05:03.158Z</lastmod>
+    <lastmod>2025-08-20T16:51:50.570Z</lastmod>
   </url>
   <url>
     <loc>https://kelly-sovacool.github.io/gh-actions-demo/sections/ghapi.html</loc>
-    <lastmod>2025-02-19T22:05:03.158Z</lastmod>
+    <lastmod>2025-08-20T16:51:50.570Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kelly-sovacool.github.io/gh-actions-demo/sections/intro.html</loc>
+    <lastmod>2025-08-20T16:51:50.570Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kelly-sovacool.github.io/gh-actions-demo/sections/snakemake.html</loc>
+    <lastmod>2025-08-20T16:51:50.570Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kelly-sovacool.github.io/gh-actions-demo/sections/ci.html</loc>
+    <lastmod>2025-08-20T16:51:50.570Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kelly-sovacool.github.io/gh-actions-demo/sections/conclusion.html</loc>
+    <lastmod>2025-08-20T16:51:50.570Z</lastmod>
   </url>
 </urlset>
