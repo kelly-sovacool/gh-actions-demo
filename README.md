@@ -2,6 +2,8 @@
 
 Coding Club: Intro to GitHub Actions for Analysts & Engineers
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17371095.svg)](https://doi.org/10.5281/zenodo.17371095)
+
 - Demo: <http://sovacool.dev/gh-actions-demo/>
 - Example code and worfklow files used in the demo: <https://github.com/kelly-sovacool/gh-actions-sandbox>
 - Presented as a 1-hour live demo for the CCR [Bioinformatics Training and Education Program](https://bioinformatics.ccr.cancer.gov/btep/classes/) 
